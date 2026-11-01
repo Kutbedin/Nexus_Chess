@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "source": "Lichess puzzle database (CC0), https://database.lichess.org/#puzzles",
+  "generatedAt": "2026-11-01",
+  "total": 2009,
+  "packs": [
+    {
+      "id": "01",
+      "file": "pack-01.json",
+      "count": 224,
+      "minRating": 416,
+      "maxRating": 731,
+      "themeCounts": {
+        "backRankMate": 30,
+        "mateIn1": 43,
+        "mateIn2": 35,
+        "hangingPiece": 14,
+        "promotion": 11,
+        "fork": 32,
+        "pin": 19,
+        "skewer": 22,
+        "discoveredAttack": 10,
+        "deflection": 5,
+        "trappedPiece": 3
+      }
+    },
+    {
+      "id": "02",
+      "file": "pack-02.json",
+      "count": 224,
+      "minRating": 732,
+      "maxRating": 793,
+      "themeCounts": {
+        "discoveredAttack": 26,
+        "promotion": 13,
+        "skewer": 14,
+        "hangingPiece": 33,
+        "fork": 35,
+        "mateIn1": 25,
+        "mateIn2": 21,
+        "backRankMate": 13,
+        "trappedPiece": 5,
+        "pin": 28,
+        "deflection": 11
+      }
+    },
+    {
+      "id": "03",
+      "file": "pack-03.json",
+      "count": 224,
+      "minRating": 793,
+      "maxRating": 962,
+      "themeCounts": {
+        "mateIn1": 42,
+        "skewer": 18,
+        "hangingPiece": 25,
+        "pin": 18,
+        "fork": 34,
+        "mateIn2": 26,
+        "trappedPiece": 5,
+        "discoveredAttack": 12,
+        "promotion": 13,
+        "deflection": 10,
+        "backRankMate": 21
+      }
+    },
+    {
+      "id": "04",
+      "file": "pack-04.json",
+      "count": 224,
+      "minRating": 963,
+      "maxRating": 1065,
+      "themeCounts": {
+        "mateIn2": 27,
+        "pin": 25,
+        "skewer": 11,
+        "backRankMate": 20,
+        "hangingPiece": 26,
+        "discoveredAttack": 20,
+        "fork": 31,
+        "deflection": 15,
+        "mateIn1": 27,
+        "trappedPiece": 15,
+        "promotion": 7
+      }
+    },
+    {
+      "id": "05",
+      "file": "pack-05.json",
+      "count": 224,
+      "minRating": 1065,
+      "maxRating": 1169,
+      "themeCounts": {
+        "discoveredAttack": 11,
+        "promotion": 17,
+        "pin": 20,
+        "fork": 28,
+        "mateIn1": 34,
+        "skewer": 21,
+        "mateIn2": 28,
+        "deflection": 14,
+        "trappedPiece": 8,
+        "backRankMate": 20,
+        "hangingPiece": 23
+      }
+    },
+    {
+      "id": "06",
+      "file": "pack-06.json",
+      "count": 224,
+      "minRating": 1170,
+      "maxRating": 1359,
+      "themeCounts": {
+        "deflection": 14,
+        "fork": 24,
+        "mateIn1": 35,
+        "discoveredAttack": 23,
+        "mateIn2": 23,
+        "skewer": 17,
+        "backRankMate": 22,
+        "hangingPiece": 21,
+        "pin": 24,
+        "trappedPiece": 14,
+        "promotion": 7
+      }
+    },
+    {
+      "id": "07",
+      "file": "pack-07.json",
+      "count": 224,
+      "minRating": 1359,
+      "maxRating": 1555,
+      "themeCounts": {
+        "promotion": 10,
+        "mateIn2": 27,
+        "pin": 19,
+        "hangingPiece": 25,
+        "mateIn1": 33,
+        "trappedPiece": 9,
+        "deflection": 18,
+        "fork": 36,
+        "skewer": 15,
+        "discoveredAttack": 16,
+        "backRankMate": 16
+      }
+    },
+    {
+      "id": "08",
+      "file": "pack-08.json",
+      "count": 224,
+      "minRating": 1558,
+      "maxRating": 1803,
+      "themeCounts": {
+        "mateIn1": 29,
+        "pin": 25,
+        "mateIn2": 35,
+        "skewer": 17,
+        "fork": 32,
+        "backRankMate": 20,
+        "trappedPiece": 15,
+        "hangingPiece": 14,
+        "discoveredAttack": 18,
+        "promotion": 9,
+        "deflection": 10
+      }
+    },
+    {
+      "id": "09",
+      "file": "pack-09.json",
+      "count": 217,
+      "minRating": 1804,
+      "maxRating": 2673,
+      "themeCounts": {
+        "mateIn2": 18,
+        "backRankMate": 18,
+        "promotion": 13,
+        "discoveredAttack": 16,
+        "fork": 28,
+        "hangingPiece": 31,
+        "mateIn1": 32,
+        "pin": 22,
+        "skewer": 17,
+        "deflection": 12,
+        "trappedPiece": 10
+      }
+    }
+  ]
+}
