@@ -1,44 +1,122 @@
 {
   "minik": {
-    "name": "小马克斯",
-    "tagline": "刚开始学棋，最喜欢吃子。",
+    "title": "新手",
+    "tagline": "刚开始学棋。会保护自己的棋子，但很少能看到两步之后。",
     "lines": {
-      "greeting": ["你好！一起下棋吧？"],
-      "botCaptures": ["嘿！这个棋子归我啦。"],
-      "playerCaptures": ["哎呀，我没看到！"],
-      "botGivesCheck": ["将军！没想到吧？"],
-      "playerGivesCheck": ["糟糕，我的王有危险！"],
-      "botWins": ["我赢了！再来一局？"],
-      "botLoses": ["恭喜你，下得真好！"],
-      "draw": ["和棋！我们都很棒。"]
+      "greeting": [
+        "你好！一起下棋吧？"
+      ],
+      "botCaptures": [
+        "嘿！这个棋子归我啦。"
+      ],
+      "playerCaptures": [
+        "哎呀，我没看到！"
+      ],
+      "botGivesCheck": [
+        "将军！没想到吧？"
+      ],
+      "playerGivesCheck": [
+        "糟糕，我的王有危险！"
+      ],
+      "botWins": [
+        "我赢了！再来一局？"
+      ],
+      "botLoses": [
+        "恭喜你，下得真好！"
+      ],
+      "draw": [
+        "和棋！我们都很棒。"
+      ]
     }
   },
   "atli": {
-    "name": "骑士诺拉",
+    "title": "马术大师",
     "tagline": "喜欢用马发动出其不意的进攻。",
     "lines": {
-      "greeting": ["我的马已经准备好了，你的呢？"],
-      "botCaptures": ["我的马早就看到了。"],
-      "playerCaptures": ["嗯，挺聪明。"],
-      "botGivesCheck": ["将军！马会从任何地方冒出来。"],
-      "playerGivesCheck": ["不错，但还没结束。"],
-      "botWins": ["我的马又赢了！"],
-      "botLoses": ["这次你赢了。我要再战一局！"],
-      "draw": ["和棋。精彩的较量。"]
+      "greeting": [
+        "我的马已经准备好了，你的呢？"
+      ],
+      "botCaptures": [
+        "我的马早就看到了。"
+      ],
+      "playerCaptures": [
+        "嗯，挺聪明。"
+      ],
+      "botGivesCheck": [
+        "将军！马会从任何地方冒出来。"
+      ],
+      "playerGivesCheck": [
+        "不错，但还没结束。"
+      ],
+      "botWins": [
+        "我的马又赢了！"
+      ],
+      "botLoses": [
+        "这次你赢了。我要再战一局！"
+      ],
+      "draw": [
+        "和棋。精彩的较量。"
+      ]
+    }
+  },
+  "filiz": {
+    "title": "斜线大师",
+    "tagline": "把象放在长斜线上，耐心等待。",
+    "lines": {
+      "greeting": [
+        "我的象在长斜线上，耐心等待着。"
+      ],
+      "botCaptures": [
+        "斜线是通的，我就吃了。"
+      ],
+      "playerCaptures": [
+        "嗯，这个我没算到。"
+      ],
+      "botGivesCheck": [
+        "将军！沿着斜线来了。"
+      ],
+      "playerGivesCheck": [
+        "别担心，我很小心。"
+      ],
+      "botWins": [
+        "耐心赢了！"
+      ],
+      "botLoses": [
+        "你下得太好了，恭喜！"
+      ],
+      "draw": [
+        "和棋。势均力敌的一局。"
+      ]
     }
   },
   "sultan": {
-    "name": "城堡苏丹",
-    "tagline": "世界 1 的首领，绝不轻易交出城堡。",
+    "title": "世界 1 首领",
+    "tagline": "绝不轻易交出城堡。",
     "lines": {
-      "greeting": ["你竟然来到了我的城堡……让我看看你的本事。"],
-      "botCaptures": ["我的城墙坚不可摧。"],
-      "playerCaptures": ["吃掉一个子？城堡依然屹立。"],
-      "botGivesCheck": ["将军！你正站在苏丹面前。"],
-      "playerGivesCheck": ["好大的胆子……"],
-      "botWins": ["城堡没有陷落。变强之后再来吧！"],
-      "botLoses": ["城堡陷落了……你是真正的冠军！"],
-      "draw": ["和棋。你和城堡都还屹立不倒。"]
+      "greeting": [
+        "你竟然来到了我的城堡……让我看看你的本事。"
+      ],
+      "botCaptures": [
+        "我的城墙坚不可摧。"
+      ],
+      "playerCaptures": [
+        "吃掉一个子？城堡依然屹立。"
+      ],
+      "botGivesCheck": [
+        "将军！你正站在苏丹面前。"
+      ],
+      "playerGivesCheck": [
+        "好大的胆子……"
+      ],
+      "botWins": [
+        "城堡没有陷落。变强之后再来吧！"
+      ],
+      "botLoses": [
+        "城堡陷落了……你是真正的冠军！"
+      ],
+      "draw": [
+        "和棋。你和城堡都还屹立不倒。"
+      ]
     }
   }
 }

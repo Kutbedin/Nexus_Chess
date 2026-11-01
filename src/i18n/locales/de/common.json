@@ -6,17 +6,20 @@
   "language": {
     "label": "Sprache",
     "beta": "Beta",
-    "betaNotice": "Diese Übersetzung wurde maschinell erstellt und wartet auf eine Überprüfung."
+    "betaNotice": "Diese Übersetzung wurde maschinell erstellt und wartet auf eine Überprüfung.",
+    "reportError": "Übersetzungsfehler melden",
+    "reportTemplate": "Sprache: {{locale}}\nBildschirm: {{screen}}\n\nFehlerhafter Text:\n\nVorschlag:\n"
   },
   "map": {
     "title": "Welt 1",
     "locked": "Gesperrt",
     "boss": "Boss",
     "puzzles": "Aufgaben-Station",
-    "puzzlesSoon": "Hier gibt es bald Schachaufgaben.",
     "play": "Spielen",
     "stars_one": "{{count}} Stern",
-    "stars_other": "{{count}} Sterne"
+    "stars_other": "{{count}} Sterne",
+    "puzzleGoal_one": "{{count}} Aufgabe: {{theme}}",
+    "puzzleGoal_other": "{{count}} Aufgaben: {{theme}}"
   },
   "game": {
     "backToMap": "Zurück zur Karte",
@@ -29,8 +32,15 @@
     "promotionTitle": "Bauer umwandeln in…",
     "cancel": "Abbrechen",
     "youPlay": "Du: {{color}}",
-    "color": { "w": "Weiß", "b": "Schwarz" },
-    "result": { "win": "Du hast gewonnen!", "loss": "Du hast verloren", "draw": "Remis" },
+    "color": {
+      "w": "Weiß",
+      "b": "Schwarz"
+    },
+    "result": {
+      "win": "Du hast gewonnen!",
+      "loss": "Du hast verloren",
+      "draw": "Remis"
+    },
     "reason": {
       "checkmate": "Schachmatt",
       "resigned": "Aufgabe",
@@ -42,7 +52,35 @@
     },
     "engineError": "Die Engine konnte nicht geladen werden. Bitte lade die Seite neu."
   },
-  "pieces": { "p": "Bauer", "n": "Springer", "b": "Läufer", "r": "Turm", "q": "Dame", "k": "König" },
-  "notation": { "K": "K", "Q": "D", "R": "T", "B": "L", "N": "S" },
-  "a11y": { "loading": "Wird geladen", "speechBubble": "{{name}} sagt" }
+  "pieces": {
+    "p": "Bauer",
+    "n": "Springer",
+    "b": "Läufer",
+    "r": "Turm",
+    "q": "Dame",
+    "k": "König"
+  },
+  "notation": {
+    "K": "K",
+    "Q": "D",
+    "R": "T",
+    "B": "L",
+    "N": "S"
+  },
+  "a11y": {
+    "loading": "Wird geladen",
+    "speechBubble": "{{name}} sagt"
+  },
+  "nav": {
+    "label": "Hauptmenü",
+    "map": "Karte",
+    "puzzles": "Aufgaben",
+    "revenge": "Revanche",
+    "about": "Über"
+  },
+  "revengeToast": {
+    "analysing": "Deine Partie wird analysiert… Revanche-Aufgaben werden vorbereitet.",
+    "ready_one": "{{count}} neue Revanche-Aufgabe ist bereit!",
+    "ready_other": "{{count}} neue Revanche-Aufgaben sind bereit!"
+  }
 }

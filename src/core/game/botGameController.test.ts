@@ -91,4 +91,15 @@ describe('BotGameController: UI to engine integration', () => {
     expect(c.getState().outcome).toEqual({ kind: 'resigned', winner: 'b' })
     expect(c.getState().reaction).toBe('botWins')
   })
+
+  it('resigning while the bot is thinking does not apply the late bot move', async () => {
+    const { c } = setup('4k3/8/8/8/8/8/8/4K2R w - - 0 1', 'w', ['e8d8'])
+    c.start()
+    expect(c.playerDrop('h1', 'h2')).toBe(true)
+    expect(c.getState().botThinking).toBe(true)
+    c.resign()
+    await expect(c.settled()).resolves.toBeUndefined()
+    expect(c.getState().moves).toHaveLength(1)
+    expect(c.getState().outcome.kind).toBe('resigned')
+  })
 })

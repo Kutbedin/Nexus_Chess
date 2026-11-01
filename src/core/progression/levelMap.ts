@@ -27,12 +27,15 @@ export interface PlayerProgress {
 
 export const EMPTY_PROGRESS: PlayerProgress = { version: 1, nodes: {} }
 
-/** World 1 of the vertical map: two regular bots, a puzzle stop, then the boss. */
+/** World 1 of the vertical map: three regular bots with puzzle stops between them, then the boss. */
 export const WORLD_1: readonly LevelNode[] = [
   { id: 'w1-1', kind: 'bot', botId: 'minik', requires: [] },
   { id: 'w1-2', kind: 'puzzles', puzzleTheme: 'mateIn1', puzzleCount: 3, requires: ['w1-1'] },
   { id: 'w1-3', kind: 'bot', botId: 'atli', requires: ['w1-2'] },
-  { id: 'w1-boss', kind: 'boss', botId: 'sultan', requires: ['w1-3'] },
+  { id: 'w1-4', kind: 'puzzles', puzzleTheme: 'fork', puzzleCount: 3, requires: ['w1-3'] },
+  { id: 'w1-5', kind: 'bot', botId: 'filiz', requires: ['w1-4'] },
+  { id: 'w1-6', kind: 'puzzles', puzzleTheme: 'backRankMate', puzzleCount: 3, requires: ['w1-5'] },
+  { id: 'w1-boss', kind: 'boss', botId: 'sultan', requires: ['w1-6'] },
 ]
 
 export function isUnlocked(map: readonly LevelNode[], progress: PlayerProgress, nodeId: string): boolean {

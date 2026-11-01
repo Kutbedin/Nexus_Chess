@@ -10,7 +10,7 @@ interface Props {
 
 export function SpeechBubble({ bot, reaction, variant }: Props) {
   const { t } = useTranslation('bots')
-  const name = t(`${bot.id}.name`)
+  const name = bot.name
   const lines = reaction ? t(`${bot.id}.lines.${reaction}`, { returnObjects: true }) : null
   const text = Array.isArray(lines) && lines.length > 0 ? String(lines[variant % lines.length]) : null
 
@@ -20,7 +20,7 @@ export function SpeechBubble({ bot, reaction, variant }: Props) {
         {bot.avatar}
       </span>
       <div className="bot-meta">
-        <strong>{name}</strong>
+        <strong lang="tr">{name}</strong> <span className="bot-title">{t(`${bot.id}.title`)}</span>
         {text && (
           <p className="speech-bubble" aria-live="polite" aria-label={t('common:a11y.speechBubble', { name })}>
             {text}

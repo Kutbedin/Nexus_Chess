@@ -1,9 +1,9 @@
 import { Chess } from 'chess.js'
 import { scoreToCp, type CandidateLine } from '../engine/types'
 import { pickWeighted, type Rng } from '../random'
+import { PIECE_VALUE, findHangingPieces } from '../tactics/tactics'
 import type { BotPersonality, OpeningBook } from './types'
 
-const PIECE_VALUE: Record<string, number> = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 }
 
 export function bookMove(book: OpeningBook, uciHistory: readonly string[], fen: string, rng: Rng): string | null {
   const entries = book[uciHistory.join(' ')]
@@ -40,7 +40,9 @@ export function scoreCandidates(
   if (lines.length === 0) return []
   const chess = new Chess(fen)
   const best = Math.max(...lines.map((l) => scoreToCp(l.score)))
-  const tolerance = rng() < bot.blunderChance ? bot.blunderLossCp : bot.maxLossCp
+  const rolled = rng() < bot.blunderChance ? bot.blunderLossCp : bot.maxLossCp
+  const tolerance = Math.min(rolled, bot.safety?.hardMaxLossCp ?? Infinity)
+  const botColor = chess.turn()
 
   const scored = lines
     .map((l) => {
@@ -51,18 +53,27 @@ export function scoreCandidates(
         const m = chess.move(uci)
         if (m.isCapture()) styleBonus += bot.style.aggression / 2 + bot.style.materialism * PIECE_VALUE[m.captured ?? 'p']
         if (chess.inCheck()) styleBonus += bot.style.aggression
+        const hangsHeavy = !!bot.safety?.avoidHangingHeavyPieces && leavesHeavyPieceHanging(chess.fen(), botColor)
         chess.undo()
+        return { uci, cp, styleBonus, weight: 0, hangsHeavy }
       } catch {
         return null
       }
-      return { uci, cp, styleBonus, weight: 0 }
     })
-    .filter((c): c is ScoredCandidate => c !== null && best - c.cp <= tolerance)
+    .filter((c): c is ScoredCandidate & { hangsHeavy: boolean } => c !== null && best - c.cp <= tolerance)
+
+  // A careful beginner never leaves a queen/rook en prise, unless every option does.
+  const safe = scored.filter((c) => !c.hangsHeavy)
+  const pool = (safe.length > 0 ? safe : scored).map(({ hangsHeavy: _ignored, ...c }) => c)
 
   const t = Math.max(1, bot.temperatureCp)
-  const top = Math.max(...scored.map((c) => c.cp + c.styleBonus))
-  for (const c of scored) c.weight = Math.exp((c.cp + c.styleBonus - top) / t)
-  return scored
+  const top = Math.max(...pool.map((c) => c.cp + c.styleBonus))
+  for (const c of pool) c.weight = Math.exp((c.cp + c.styleBonus - top) / t)
+  return pool
+}
+
+function leavesHeavyPieceHanging(fenAfter: string, color: 'w' | 'b'): boolean {
+  return findHangingPieces(fenAfter, color).some((h) => PIECE_VALUE[h.piece] >= 5)
 }
 
 export function chooseEngineMove(fen: string, lines: readonly CandidateLine[], bot: BotPersonality, rng: Rng): string | null {

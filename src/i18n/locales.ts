@@ -33,7 +33,7 @@ export type Locale = keyof typeof LOCALES
 
 export const DEFAULT_LOCALE: Locale = 'tr'
 export const SUPPORTED_LOCALES = Object.keys(LOCALES) as Locale[]
-export const NAMESPACES = ['common', 'bots', 'coach'] as const
+export const NAMESPACES = ['common', 'bots', 'coach', 'puzzles', 'about'] as const
 export type Namespace = (typeof NAMESPACES)[number]
 export const LOCALE_STORAGE_KEY = 'nexus.locale'
 

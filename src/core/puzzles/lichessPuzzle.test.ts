@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { checkPuzzleMove, parseLichessCsvRow } from './lichessPuzzle'
+import { PuzzleSession } from './puzzleSession'
+import { parseLichessCsvRow } from './lichessPuzzle'
 
 // Real row shape from the Lichess CC0 puzzle export.
 const ROW =
@@ -14,9 +15,13 @@ describe('Lichess puzzle import', () => {
     expect(p.themes).toContain('mateIn2')
   })
 
-  it('walks through the solution', () => {
+  it('walks through the solution with PuzzleSession', () => {
     const p = parseLichessCsvRow(ROW)
-    expect(checkPuzzleMove(p, p.fen, 0, 'a2e6')).toEqual({ status: 'correct', reply: 'd7d8', done: false })
-    expect(checkPuzzleMove(p, p.fen, 0, 'f7g7')).toEqual({ status: 'wrong' })
+    const s = new PuzzleSession(p.fen, p.solution)
+    expect(s.tryMove('f7', 'g7')).toEqual({ status: 'wrong', expected: 'a2e6' })
+    const r = s.tryMove('a2', 'e6')
+    expect(r.status === 'correct' && r.reply?.uci).toBe('d7d8')
+    expect(s.tryMove('f7', 'f8')).toEqual({ status: 'solved' })
+    expect(s.firstTry).toBe(false)
   })
 })

@@ -1,0 +1,63 @@
+{
+  "title": "Problèmes",
+  "intro": "Les packs vont du plus facile au plus difficile. Résous la moitié d'un pack pour ouvrir le suivant. Fonctionne aussi hors ligne.",
+  "total_one": "{{count}} problème",
+  "total_many": "{{count}} problèmes",
+  "total_other": "{{count}} problèmes",
+  "loadError": "Impossible de charger les problèmes. Vérifie ta connexion.",
+  "attribution": "Problèmes : base de problèmes Lichess (CC0).",
+  "backToMap": "Retour à la carte",
+  "backToPacks": "Retour aux packs",
+  "nodeProgress": "{{solved}} / {{count}}",
+  "nodeDone": "Étape terminée ! Le niveau suivant est ouvert.",
+  "packDone": "Tu as résolu tous les problèmes de ce pack !",
+  "ratingChip": "Classement {{rating}}",
+  "pack": {
+    "name": "Pack {{n}}",
+    "rating": "Classement {{min}}–{{max}}",
+    "progress": "{{solved}} / {{count}} résolus",
+    "locked": "Résous la moitié du pack précédent"
+  },
+  "filter": {
+    "label": "Thème",
+    "all": "Tous les thèmes"
+  },
+  "solver": {
+    "whiteToMove": "Les Blancs jouent et gagnent",
+    "blackToMove": "Les Noirs jouent et gagnent",
+    "wrong": "Pas celui-là, réessaie !",
+    "correct": "Correct ! Continue…",
+    "solved": "Résolu !",
+    "solvedFirstTry": "Bravo ! Résolu du premier coup.",
+    "revealed": "Le bon coup est indiqué. La prochaine fois !",
+    "hint": "Indice",
+    "showSolution": "Voir la solution",
+    "next": "Suivant"
+  },
+  "revenge": {
+    "title": "Problèmes de revanche",
+    "progress": "{{n}} / {{count}}",
+    "emptyNever": "Pas encore de problèmes de revanche. Joue contre les bots ; les coups gagnants manqués apparaîtront ici.",
+    "emptyAllDone": "Revanche terminée pour aujourd'hui ! Les prochaines révisions apparaîtront ici.",
+    "explainer": "Seules les positions avec un seul coup gagnant clair sont retenues. Chaque bonne réponse espace les révisions (1, 3, 7, 16, 35 jours).",
+    "story": {
+      "missedMate_one": "Le mat manqué contre {{bot}} ! Au coup {{moveNumber}}, tu as joué {{san}}, mais il y avait mat en {{count}}. Trouve-le !",
+      "missedMate_many": "Le mat manqué contre {{bot}} ! Au coup {{moveNumber}}, tu as joué {{san}}, mais il y avait mat en {{count}}. Trouve-le !",
+      "missedMate_other": "Le mat manqué contre {{bot}} ! Au coup {{moveNumber}}, tu as joué {{san}}, mais il y avait mat en {{count}}. Trouve-le !",
+      "missedWin": "L'occasion manquée contre {{bot}} ! Au coup {{moveNumber}}, tu as joué {{san}}, mais un coup gagnait nettement. Trouve-le !"
+    }
+  },
+  "themes": {
+    "backRankMate": "Mat du couloir",
+    "mateIn1": "Mat en 1",
+    "mateIn2": "Mat en 2",
+    "fork": "Fourchette",
+    "pin": "Clouage",
+    "skewer": "Enfilade",
+    "discoveredAttack": "Attaque à la découverte",
+    "hangingPiece": "Pièce en prise",
+    "deflection": "Déviation",
+    "trappedPiece": "Pièce piégée",
+    "promotion": "Promotion"
+  }
+}

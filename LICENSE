@@ -1,0 +1,11 @@
+Copyright (c) 2026 Nexus Chess. All rights reserved.
+
+This software and its source code are proprietary and confidential. No license is
+granted to copy, modify, distribute, or use this software, in whole or in part,
+without prior written permission from the copyright holder.
+
+Third-party components keep their own licenses. In particular, the Stockfish chess
+engine distributed in public/engine/ is licensed under the GNU General Public License
+version 3 and runs as a separate program; see docs/stockfish-source.md and
+public/engine/Copying.txt. Puzzles in public/puzzles/ come from the Lichess puzzle
+database and are released under CC0.

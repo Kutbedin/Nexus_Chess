@@ -1,44 +1,122 @@
 {
   "minik": {
-    "name": "Petit Max",
-    "tagline": "Débute aux échecs et adore prendre des pièces.",
+    "title": "Le Débutant",
+    "tagline": "Débute aux échecs. Protège ses pièces mais voit rarement deux coups à l'avance.",
     "lines": {
-      "greeting": ["Salut ! On joue ensemble ?"],
-      "botCaptures": ["Hop ! Cette pièce est à moi maintenant."],
-      "playerCaptures": ["Oups, je ne l'avais pas vu !"],
-      "botGivesCheck": ["Échec ! Tu ne t'y attendais pas, hein ?"],
-      "playerGivesCheck": ["Oh non, mon roi est en danger !"],
-      "botWins": ["J'ai gagné ! On rejoue ?"],
-      "botLoses": ["Bravo, tu as très bien joué !"],
-      "draw": ["Match nul ! On était bons tous les deux."]
+      "greeting": [
+        "Salut ! On joue ensemble ?"
+      ],
+      "botCaptures": [
+        "Hop ! Cette pièce est à moi maintenant."
+      ],
+      "playerCaptures": [
+        "Oups, je ne l'avais pas vu !"
+      ],
+      "botGivesCheck": [
+        "Échec ! Tu ne t'y attendais pas, hein ?"
+      ],
+      "playerGivesCheck": [
+        "Oh non, mon roi est en danger !"
+      ],
+      "botWins": [
+        "J'ai gagné ! On rejoue ?"
+      ],
+      "botLoses": [
+        "Bravo, tu as très bien joué !"
+      ],
+      "draw": [
+        "Match nul ! On était bons tous les deux."
+      ]
     }
   },
   "atli": {
-    "name": "Nora la Cavalière",
+    "title": "Maîtresse des cavaliers",
     "tagline": "Adore les attaques surprises avec ses cavaliers.",
     "lines": {
-      "greeting": ["Mes cavaliers sont prêts. Et les tiens ?"],
-      "botCaptures": ["Mon cavalier l'avait vu depuis longtemps."],
-      "playerCaptures": ["Hmm, malin."],
-      "botGivesCheck": ["Échec ! Les cavaliers surgissent de partout."],
-      "playerGivesCheck": ["Pas mal, mais ce n'est pas fini."],
-      "botWins": ["Mes cavaliers gagnent encore !"],
-      "botLoses": ["Tu gagnes cette fois. Je veux une revanche !"],
-      "draw": ["Nulle. Beau combat."]
+      "greeting": [
+        "Mes cavaliers sont prêts. Et les tiens ?"
+      ],
+      "botCaptures": [
+        "Mon cavalier l'avait vu depuis longtemps."
+      ],
+      "playerCaptures": [
+        "Hmm, malin."
+      ],
+      "botGivesCheck": [
+        "Échec ! Les cavaliers surgissent de partout."
+      ],
+      "playerGivesCheck": [
+        "Pas mal, mais ce n'est pas fini."
+      ],
+      "botWins": [
+        "Mes cavaliers gagnent encore !"
+      ],
+      "botLoses": [
+        "Tu gagnes cette fois. Je veux une revanche !"
+      ],
+      "draw": [
+        "Nulle. Beau combat."
+      ]
+    }
+  },
+  "filiz": {
+    "title": "Maîtresse des diagonales",
+    "tagline": "Place ses fous sur les grandes diagonales et attend patiemment.",
+    "lines": {
+      "greeting": [
+        "Mes fous sont sur les grandes diagonales et attendent patiemment."
+      ],
+      "botCaptures": [
+        "La diagonale était ouverte, alors j'ai pris."
+      ],
+      "playerCaptures": [
+        "Hmm, je ne l’avais pas prévu."
+      ],
+      "botGivesCheck": [
+        "Échec ! Tout droit par la diagonale."
+      ],
+      "playerGivesCheck": [
+        "Je fais attention, ne t’inquiète pas."
+      ],
+      "botWins": [
+        "La patience gagne !"
+      ],
+      "botLoses": [
+        "Tu as été excellent. Bravo !"
+      ],
+      "draw": [
+        "Nulle. Une partie équilibrée."
+      ]
     }
   },
   "sultan": {
-    "name": "Sultan Château",
-    "tagline": "Le boss du Monde 1. Ne cède jamais son château facilement.",
+    "title": "Boss du Monde 1",
+    "tagline": "Ne cède jamais son château facilement.",
     "lines": {
-      "greeting": ["Tu es donc arrivé jusqu'à mon château… Montre-moi ce que tu vaux."],
-      "botCaptures": ["Les murs de mon château sont solides."],
-      "playerCaptures": ["Tu as pris une pièce ? Le château tient toujours."],
-      "botGivesCheck": ["Échec ! Tu es devant le Sultan."],
-      "playerGivesCheck": ["Quelle audace…"],
-      "botWins": ["Le château n'est pas tombé. Reviens plus fort !"],
-      "botLoses": ["Le château est tombé… Tu es un vrai champion !"],
-      "draw": ["Nulle. Toi et le château êtes toujours debout."]
+      "greeting": [
+        "Tu es donc arrivé jusqu'à mon château… Montre-moi ce que tu vaux."
+      ],
+      "botCaptures": [
+        "Les murs de mon château sont solides."
+      ],
+      "playerCaptures": [
+        "Tu as pris une pièce ? Le château tient toujours."
+      ],
+      "botGivesCheck": [
+        "Échec ! Tu es devant le Sultan."
+      ],
+      "playerGivesCheck": [
+        "Quelle audace…"
+      ],
+      "botWins": [
+        "Le château n'est pas tombé. Reviens plus fort !"
+      ],
+      "botLoses": [
+        "Le château est tombé… Tu es un vrai champion !"
+      ],
+      "draw": [
+        "Nulle. Toi et le château êtes toujours debout."
+      ]
     }
   }
 }

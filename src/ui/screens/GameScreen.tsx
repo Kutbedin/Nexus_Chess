@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import type { BotPersonality } from '../../core/bots/types'
 import type { EnginePort } from '../../core/engine/types'
 import type { GameResult } from '../../core/progression/levelMap'
-import type { Color, Square } from '../../core/game/types'
+import type { Color, PlayedMove, Square } from '../../core/game/types'
 import type { BotGameController } from '../../core/game/botGameController'
 import { seededRng } from '../../core/random'
 import { PromotionPicker } from '../components/PromotionPicker'
@@ -16,7 +16,7 @@ interface Props {
   bot: BotPersonality
   engine: EnginePort
   playerColor?: Color
-  onFinished: (result: GameResult, plies: number) => void
+  onFinished: (result: GameResult, moves: readonly PlayedMove[]) => void
   onExit: () => void
 }
 
@@ -61,9 +61,9 @@ function GameView({ bot, playerColor, controller, onFinished, onExit, onRestart 
   useEffect(() => {
     if (result && !reported.current) {
       reported.current = true
-      onFinished(result, state.moves.length)
+      onFinished(result, state.moves)
     }
-  }, [result, onFinished, state.moves.length])
+  }, [result, onFinished, state.moves])
 
   const playersTurn = state.turn === playerColor && !state.botThinking && !result
 
@@ -95,7 +95,7 @@ function GameView({ bot, playerColor, controller, onFinished, onExit, onRestart 
   }
 
 
-  const botName = t(`bots:${bot.id}.name`)
+  const botName = bot.name
 
   return (
     <div className="game-screen">

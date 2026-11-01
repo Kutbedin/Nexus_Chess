@@ -6,17 +6,20 @@
   "language": {
     "label": "Dil",
     "beta": "beta",
-    "betaNotice": "Bu dilin çevirisi otomatik yapıldı ve gözden geçirilmeyi bekliyor."
+    "betaNotice": "Bu dilin çevirisi otomatik yapıldı ve gözden geçirilmeyi bekliyor.",
+    "reportError": "Çeviri hatası bildir",
+    "reportTemplate": "Dil: {{locale}}\nEkran: {{screen}}\n\nHatalı metin:\n\nÖnerilen düzeltme:\n"
   },
   "map": {
     "title": "Dünya 1",
     "locked": "Kilitli",
     "boss": "Boss",
     "puzzles": "Bulmaca durağı",
-    "puzzlesSoon": "Bulmacalar yakında burada.",
     "play": "Oyna",
     "stars_one": "{{count}} yıldız",
-    "stars_other": "{{count}} yıldız"
+    "stars_other": "{{count}} yıldız",
+    "puzzleGoal_one": "{{count}} bulmaca: {{theme}}",
+    "puzzleGoal_other": "{{count}} bulmaca: {{theme}}"
   },
   "game": {
     "backToMap": "Haritaya dön",
@@ -29,8 +32,15 @@
     "promotionTitle": "Piyon hangi taşa dönüşsün?",
     "cancel": "Vazgeç",
     "youPlay": "Sen: {{color}}",
-    "color": { "w": "Beyaz", "b": "Siyah" },
-    "result": { "win": "Kazandın!", "loss": "Kaybettin", "draw": "Berabere" },
+    "color": {
+      "w": "Beyaz",
+      "b": "Siyah"
+    },
+    "result": {
+      "win": "Kazandın!",
+      "loss": "Kaybettin",
+      "draw": "Berabere"
+    },
     "reason": {
       "checkmate": "Şah mat",
       "resigned": "Terk",
@@ -42,7 +52,35 @@
     },
     "engineError": "Motor yüklenemedi. Sayfayı yenilemeyi dene."
   },
-  "pieces": { "p": "piyon", "n": "at", "b": "fil", "r": "kale", "q": "vezir", "k": "şah" },
-  "notation": { "K": "Ş", "Q": "V", "R": "K", "B": "F", "N": "A" },
-  "a11y": { "loading": "Yükleniyor", "speechBubble": "{{name}} diyor ki" }
+  "pieces": {
+    "p": "piyon",
+    "n": "at",
+    "b": "fil",
+    "r": "kale",
+    "q": "vezir",
+    "k": "şah"
+  },
+  "notation": {
+    "K": "Ş",
+    "Q": "V",
+    "R": "K",
+    "B": "F",
+    "N": "A"
+  },
+  "a11y": {
+    "loading": "Yükleniyor",
+    "speechBubble": "{{name}} diyor ki"
+  },
+  "nav": {
+    "label": "Ana menü",
+    "map": "Harita",
+    "puzzles": "Bulmacalar",
+    "revenge": "İntikam",
+    "about": "Hakkında"
+  },
+  "revengeToast": {
+    "analysing": "Oyunun inceleniyor… İntikam bulmacaları hazırlanıyor.",
+    "ready_one": "{{count}} yeni intikam bulmacası hazır!",
+    "ready_other": "{{count}} yeni intikam bulmacası hazır!"
+  }
 }

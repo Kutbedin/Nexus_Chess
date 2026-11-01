@@ -6,18 +6,22 @@
   "language": {
     "label": "Idioma",
     "beta": "beta",
-    "betaNotice": "Esta traducción se generó automáticamente y está pendiente de revisión."
+    "betaNotice": "Esta traducción se generó automáticamente y está pendiente de revisión.",
+    "reportError": "Informar de un error de traducción",
+    "reportTemplate": "Idioma: {{locale}}\nPantalla: {{screen}}\n\nTexto incorrecto:\n\nCorrección sugerida:\n"
   },
   "map": {
     "title": "Mundo 1",
     "locked": "Bloqueado",
     "boss": "Jefe",
     "puzzles": "Parada de problemas",
-    "puzzlesSoon": "Pronto habrá problemas aquí.",
     "play": "Jugar",
     "stars_one": "{{count}} estrella",
     "stars_many": "{{count}} estrellas",
-    "stars_other": "{{count}} estrellas"
+    "stars_other": "{{count}} estrellas",
+    "puzzleGoal_one": "{{count}} problema: {{theme}}",
+    "puzzleGoal_many": "{{count}} problemas: {{theme}}",
+    "puzzleGoal_other": "{{count}} problemas: {{theme}}"
   },
   "game": {
     "backToMap": "Volver al mapa",
@@ -30,8 +34,15 @@
     "promotionTitle": "Coronar el peón como…",
     "cancel": "Cancelar",
     "youPlay": "Tú: {{color}}",
-    "color": { "w": "Blancas", "b": "Negras" },
-    "result": { "win": "¡Ganaste!", "loss": "Perdiste", "draw": "Tablas" },
+    "color": {
+      "w": "Blancas",
+      "b": "Negras"
+    },
+    "result": {
+      "win": "¡Ganaste!",
+      "loss": "Perdiste",
+      "draw": "Tablas"
+    },
     "reason": {
       "checkmate": "Jaque mate",
       "resigned": "Abandono",
@@ -43,7 +54,36 @@
     },
     "engineError": "No se pudo cargar el motor. Intenta recargar la página."
   },
-  "pieces": { "p": "peón", "n": "caballo", "b": "alfil", "r": "torre", "q": "dama", "k": "rey" },
-  "notation": { "K": "R", "Q": "D", "R": "T", "B": "A", "N": "C" },
-  "a11y": { "loading": "Cargando", "speechBubble": "{{name}} dice" }
+  "pieces": {
+    "p": "peón",
+    "n": "caballo",
+    "b": "alfil",
+    "r": "torre",
+    "q": "dama",
+    "k": "rey"
+  },
+  "notation": {
+    "K": "R",
+    "Q": "D",
+    "R": "T",
+    "B": "A",
+    "N": "C"
+  },
+  "a11y": {
+    "loading": "Cargando",
+    "speechBubble": "{{name}} dice"
+  },
+  "nav": {
+    "label": "Menú principal",
+    "map": "Mapa",
+    "puzzles": "Problemas",
+    "revenge": "Revancha",
+    "about": "Acerca de"
+  },
+  "revengeToast": {
+    "analysing": "Analizando tu partida… preparando problemas de revancha.",
+    "ready_one": "¡{{count}} nuevo problema de revancha listo!",
+    "ready_many": "¡{{count}} nuevos problemas de revancha listos!",
+    "ready_other": "¡{{count}} nuevos problemas de revancha listos!"
+  }
 }

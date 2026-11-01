@@ -1,6 +1,7 @@
 {
   "name": "nexus-chess",
   "private": true,
+  "license": "UNLICENSED",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -23,7 +24,7 @@
     "react-chessboard": "^5.12.1",
     "react-dom": "^19.3.1",
     "react-i18next": "^17.1.10",
-    "stockfish": "^19.0.1"
+    "stockfish": "19.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^7.0.1",

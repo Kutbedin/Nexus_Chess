@@ -9,7 +9,13 @@ alwaysApply: true
   `window`, `document`, `localStorage`, `Worker`, or anything in `src/ui`, `src/platform`, or `src/i18n`.
   Game state, bots, progression, coach, revenge puzzles, and puzzles live here.
 - `src/platform/**` holds adapters for browser/OS capabilities (Stockfish worker, storage, analytics).
-  Core code talks to them only through ports (`EnginePort`, `ProgressRepository`, `AnalyticsPort`).
+  Core code talks to them only through ports: `EngineProvider`/`EnginePort` (engine; web = Stockfish WASM
+  workers, swappable for a permissive or server engine), `StorageAdapter` (progress, puzzle stats, revenge queue;
+  local now, Supabase anonymous auth next), `AnalyticsPort` (PostHog EU, cookieless; fully off in school mode).
+- Bot proper names (`Minik Mert`, `Atlı Ayşe`, `Fil Filiz`, `Sultan Kale`) live in `src/core/bots/roster.ts`
+  and are never translated. Titles, taglines, and speech lines are i18n keys.
+- Puzzle packs are static CC0 data in `public/puzzles/`, produced only by `scripts/build-puzzles.mjs`
+  (validated, rating-sorted, 200–250 per pack). Never hand-edit pack JSON.
 - `src/ui/**` renders state and forwards gestures. No chess rules, scoring, or progression logic in components;
   call `BotGameController` / core functions instead.
 - Plain SPA only (Vite). No SSR, no server components, no Next.js-style data loaders, no reliance on

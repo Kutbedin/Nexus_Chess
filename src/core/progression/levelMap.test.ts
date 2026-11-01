@@ -25,7 +25,18 @@ describe('level map progression', () => {
     p = recordPuzzleNodeCompleted(p, 'w1-2')
     expect(isUnlocked(WORLD_1, p, 'w1-boss')).toBe(false)
     p = recordGameResult(p, 'w1-3', 'win')
+    p = recordPuzzleNodeCompleted(p, 'w1-4')
+    p = recordGameResult(p, 'w1-5', 'win')
+    expect(isUnlocked(WORLD_1, p, 'w1-boss')).toBe(false)
+    p = recordPuzzleNodeCompleted(p, 'w1-6')
     expect(isUnlocked(WORLD_1, p, 'w1-boss')).toBe(true)
+  })
+
+  it('World 1 has three regular bots and one boss, each with a puzzle stop in between', () => {
+    const bots = WORLD_1.filter((n) => n.botId).map((n) => getBot(n.botId!))
+    expect(bots.filter((b) => !b.isBoss)).toHaveLength(3)
+    expect(bots.filter((b) => b.isBoss)).toHaveLength(1)
+    expect(WORLD_1.filter((n) => n.kind === 'puzzles')).toHaveLength(3)
   })
 
   it('boss nodes point at boss bots', () => {

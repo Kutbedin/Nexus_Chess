@@ -6,17 +6,20 @@
   "language": {
     "label": "Language",
     "beta": "beta",
-    "betaNotice": "This translation was machine-generated and is awaiting review."
+    "betaNotice": "This translation was machine-generated and is awaiting review.",
+    "reportError": "Report a translation error",
+    "reportTemplate": "Language: {{locale}}\nScreen: {{screen}}\n\nIncorrect text:\n\nSuggested fix:\n"
   },
   "map": {
     "title": "World 1",
     "locked": "Locked",
     "boss": "Boss",
     "puzzles": "Puzzle stop",
-    "puzzlesSoon": "Puzzles are coming here soon.",
     "play": "Play",
     "stars_one": "{{count}} star",
-    "stars_other": "{{count}} stars"
+    "stars_other": "{{count}} stars",
+    "puzzleGoal_one": "{{count}} puzzle: {{theme}}",
+    "puzzleGoal_other": "{{count}} puzzles: {{theme}}"
   },
   "game": {
     "backToMap": "Back to map",
@@ -29,8 +32,15 @@
     "promotionTitle": "Promote your pawn to…",
     "cancel": "Cancel",
     "youPlay": "You: {{color}}",
-    "color": { "w": "White", "b": "Black" },
-    "result": { "win": "You won!", "loss": "You lost", "draw": "Draw" },
+    "color": {
+      "w": "White",
+      "b": "Black"
+    },
+    "result": {
+      "win": "You won!",
+      "loss": "You lost",
+      "draw": "Draw"
+    },
     "reason": {
       "checkmate": "Checkmate",
       "resigned": "Resignation",
@@ -42,7 +52,35 @@
     },
     "engineError": "The engine failed to load. Try reloading the page."
   },
-  "pieces": { "p": "pawn", "n": "knight", "b": "bishop", "r": "rook", "q": "queen", "k": "king" },
-  "notation": { "K": "K", "Q": "Q", "R": "R", "B": "B", "N": "N" },
-  "a11y": { "loading": "Loading", "speechBubble": "{{name}} says" }
+  "pieces": {
+    "p": "pawn",
+    "n": "knight",
+    "b": "bishop",
+    "r": "rook",
+    "q": "queen",
+    "k": "king"
+  },
+  "notation": {
+    "K": "K",
+    "Q": "Q",
+    "R": "R",
+    "B": "B",
+    "N": "N"
+  },
+  "a11y": {
+    "loading": "Loading",
+    "speechBubble": "{{name}} says"
+  },
+  "nav": {
+    "label": "Main menu",
+    "map": "Map",
+    "puzzles": "Puzzles",
+    "revenge": "Revenge",
+    "about": "About"
+  },
+  "revengeToast": {
+    "analysing": "Reviewing your game… preparing revenge puzzles.",
+    "ready_one": "{{count}} new revenge puzzle is ready!",
+    "ready_other": "{{count}} new revenge puzzles are ready!"
+  }
 }

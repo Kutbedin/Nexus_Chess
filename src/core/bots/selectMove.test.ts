@@ -30,6 +30,36 @@ describe('personality-weighted move choice', () => {
     expect(capture.weight).toBeGreaterThan(quiet.weight * 5)
   })
 
+  describe('Minik Mert: careful beginner', () => {
+    // After 1.e4 d5: Qg4?? walks into Bc8xg4.
+    const fen = 'rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2'
+    const minik = getBot('minik')
+
+    it('searches shallowly with several candidate lines', () => {
+      expect(minik.search.depth).toBeLessThanOrEqual(2)
+      expect(minik.search.multiPv).toBeGreaterThanOrEqual(4)
+    })
+
+    it('never leaves the queen en prise, even if a shallow search likes the move', () => {
+      const lines = [line('d1g4', 60), line('g1f3', 20, 2)]
+      for (let seed = 0; seed < 20; seed++) {
+        expect(chooseEngineMove(fen, lines, { ...minik, blunderChance: 1 }, seededRng(seed))).toBe('g1f3')
+      }
+      expect(scoreCandidates(fen, lines, { ...minik, safety: undefined }, seededRng(1)).map((c) => c.uci)).toContain('d1g4')
+    })
+
+    it('caps blunders at ~500cp so it misses ideas rather than gifting pieces', () => {
+      const lines = [line('e4d5', 120), line('g1f3', 20, 2), line('a2a3', -450, 3)]
+      const scored = scoreCandidates(START, lines, { ...minik, blunderChance: 1, blunderLossCp: 900 }, seededRng(1))
+      expect(scored.map((c) => c.uci)).not.toContain('a2a3')
+    })
+
+    it('falls back to the full list when every move hangs a heavy piece', () => {
+      const scored = scoreCandidates(fen, [line('d1g4', 0)], minik, seededRng(1))
+      expect(scored.map((c) => c.uci)).toEqual(['d1g4'])
+    })
+  })
+
   it('is deterministic for a given seed', () => {
     const lines = [line('e2e4', 20), line('d2d4', 15, 2), line('c2c4', 10, 3)]
     const a = Array.from({ length: 5 }, (_, i) => chooseEngineMove(START, lines, base, seededRng(i)))

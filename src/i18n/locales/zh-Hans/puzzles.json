@@ -1,0 +1,59 @@
+{
+  "title": "谜题",
+  "intro": "题包由易到难排列。解出一个题包的一半即可解锁下一个。离线也能使用。",
+  "total_other": "共 {{count}} 道谜题",
+  "loadError": "谜题加载失败，请检查网络后重试。",
+  "attribution": "谜题来源：Lichess 谜题数据库（CC0）。",
+  "backToMap": "返回地图",
+  "backToPacks": "返回题包",
+  "nodeProgress": "{{solved}} / {{count}}",
+  "nodeDone": "本站完成！下一关已解锁。",
+  "packDone": "你已解出本题包的全部谜题！",
+  "ratingChip": "难度 {{rating}}",
+  "pack": {
+    "name": "题包 {{n}}",
+    "rating": "难度 {{min}}–{{max}}",
+    "progress": "已解 {{solved}} / {{count}}",
+    "locked": "先解出上一个题包的一半"
+  },
+  "filter": {
+    "label": "主题",
+    "all": "全部主题"
+  },
+  "solver": {
+    "whiteToMove": "白先胜",
+    "blackToMove": "黑先胜",
+    "wrong": "不对，再试一次！",
+    "correct": "正确！继续……",
+    "solved": "解出来了！",
+    "solvedFirstTry": "太棒了！一次就解出来了。",
+    "revealed": "已标出正确着法。下次加油！",
+    "hint": "提示",
+    "showSolution": "显示答案",
+    "next": "下一题"
+  },
+  "revenge": {
+    "title": "复仇谜题",
+    "progress": "{{n}} / {{count}}",
+    "emptyNever": "还没有复仇谜题。和机器人下棋吧，你错过的制胜着法会出现在这里。",
+    "emptyAllDone": "今天的复仇完成了！到期的复习会出现在这里。",
+    "explainer": "只选取有唯一明确制胜着法的局面。每答对一次，复习间隔就会拉长（1、3、7、16、35 天）。",
+    "story": {
+      "missedMate_other": "你对阵{{bot}}时错过的将杀！第 {{moveNumber}} 回合你走了 {{san}}，其实有 {{count}} 步杀。现在找出来！",
+      "missedWin": "你对阵{{bot}}时错过的机会！第 {{moveNumber}} 回合你走了 {{san}}，其实有一步明显的制胜着法。现在找出来！"
+    }
+  },
+  "themes": {
+    "backRankMate": "底线杀",
+    "mateIn1": "一步杀",
+    "mateIn2": "两步杀",
+    "fork": "捉双",
+    "pin": "牵制",
+    "skewer": "串击",
+    "discoveredAttack": "闪击",
+    "hangingPiece": "无保护的棋子",
+    "deflection": "引离",
+    "trappedPiece": "被困的棋子",
+    "promotion": "升变"
+  }
+}

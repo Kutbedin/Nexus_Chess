@@ -8,9 +8,21 @@ export interface BotStyle {
   materialism: number
 }
 
+export interface BotSafety {
+  /** Never play a move that leaves a queen or rook en prise (attacked and undefended / attacked by a cheaper piece). */
+  avoidHangingHeavyPieces: boolean
+  /** Upper bound on any move's loss vs. the best candidate, even on a blunder roll. */
+  hardMaxLossCp: number
+}
+
 export interface BotPersonality {
-  /** Stable id; also the i18n key prefix in the `bots` namespace (name, tagline, lines). */
+  /** Stable id; i18n key prefix in the `bots` namespace (title, tagline, lines). */
   id: string
+  /**
+   * Turkish proper name, shown unchanged in every locale (like a person's name).
+   * Only the title, tagline, and speech lines are translated.
+   */
+  name: string
   avatar: string
   /** Displayed approximate strength, not used by the engine. */
   displayElo: number
@@ -24,6 +36,7 @@ export interface BotPersonality {
   blunderChance: number
   blunderLossCp: number
   style: BotStyle
+  safety?: BotSafety
   book: OpeningBook
 }
 

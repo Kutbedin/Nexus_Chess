@@ -1,4 +1,5 @@
 import { scoreToCp, type CandidateLine } from '../engine/types'
+import { isDue, isMastered, newReviewState, review, type ReviewState } from './srs'
 
 export interface RevengeCriteria {
   /** Best move must be at least this good for the side to move. */
@@ -28,10 +29,44 @@ export function singleClearWinningMove(
   return best.pv[0]
 }
 
+/** What the player missed; drives the story line ("the mate you missed against Minik Mert"). */
+export type RevengeKind = 'missedMate' | 'missedWin'
+
 export interface RevengePuzzle {
+  /** `${gameId}:${ply}` — stable, so re-analysing a game never duplicates puzzles. */
   id: string
+  /** Position before the player's mistake, player to move. */
   fen: string
   solutionUci: string
-  sourceGameId: string
+  kind: RevengeKind
+  /** Mate distance in moves, for missedMate. */
+  mateIn?: number
+  botId: string
+  moveNumber: number
+  /** What the player actually played (English SAN; localized for display). */
+  playedSan: string
   createdAt: number
+}
+
+export interface RevengeEntry {
+  puzzle: RevengePuzzle
+  review: ReviewState
+}
+
+/** Adds new puzzles (skipping duplicate ids and positions) and caps the queue size. */
+export function addRevengePuzzles(entries: readonly RevengeEntry[], puzzles: readonly RevengePuzzle[], maxEntries = 200): RevengeEntry[] {
+  const ids = new Set(entries.map((e) => e.puzzle.id))
+  const fens = new Set(entries.map((e) => e.puzzle.fen))
+  const added = puzzles
+    .filter((p) => !ids.has(p.id) && !fens.has(p.fen))
+    .map((p) => ({ puzzle: p, review: newReviewState(p.createdAt) }))
+  return [...entries, ...added].slice(-maxEntries)
+}
+
+export function dueRevenge(entries: readonly RevengeEntry[], now: number): RevengeEntry[] {
+  return entries.filter((e) => !isMastered(e.review) && isDue(e.review, now)).sort((a, b) => a.review.dueAt - b.review.dueAt)
+}
+
+export function recordRevengeAttempt(entries: readonly RevengeEntry[], id: string, solved: boolean, now: number): RevengeEntry[] {
+  return entries.map((e) => (e.puzzle.id === id ? { ...e, review: review(e.review, solved, now) } : e))
 }

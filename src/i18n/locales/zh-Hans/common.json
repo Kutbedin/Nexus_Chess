@@ -6,16 +6,18 @@
   "language": {
     "label": "语言",
     "beta": "测试版",
-    "betaNotice": "此翻译由机器生成，等待人工审校。"
+    "betaNotice": "此翻译由机器生成，等待人工审校。",
+    "reportError": "报告翻译错误",
+    "reportTemplate": "语言：{{locale}}\n页面：{{screen}}\n\n错误文本：\n\n建议修改：\n"
   },
   "map": {
     "title": "世界 1",
     "locked": "未解锁",
     "boss": "首领",
     "puzzles": "谜题站",
-    "puzzlesSoon": "谜题即将上线。",
     "play": "开始",
-    "stars_other": "{{count}} 颗星"
+    "stars_other": "{{count}} 颗星",
+    "puzzleGoal_other": "{{count}} 道谜题：{{theme}}"
   },
   "game": {
     "backToMap": "返回地图",
@@ -28,8 +30,15 @@
     "promotionTitle": "兵升变为…",
     "cancel": "取消",
     "youPlay": "你执{{color}}",
-    "color": { "w": "白棋", "b": "黑棋" },
-    "result": { "win": "你赢了！", "loss": "你输了", "draw": "和棋" },
+    "color": {
+      "w": "白棋",
+      "b": "黑棋"
+    },
+    "result": {
+      "win": "你赢了！",
+      "loss": "你输了",
+      "draw": "和棋"
+    },
     "reason": {
       "checkmate": "将死",
       "resigned": "认输",
@@ -41,7 +50,34 @@
     },
     "engineError": "引擎加载失败，请刷新页面重试。"
   },
-  "pieces": { "p": "兵", "n": "马", "b": "象", "r": "车", "q": "后", "k": "王" },
-  "notation": { "K": "王", "Q": "后", "R": "车", "B": "象", "N": "马" },
-  "a11y": { "loading": "加载中", "speechBubble": "{{name}} 说" }
+  "pieces": {
+    "p": "兵",
+    "n": "马",
+    "b": "象",
+    "r": "车",
+    "q": "后",
+    "k": "王"
+  },
+  "notation": {
+    "K": "王",
+    "Q": "后",
+    "R": "车",
+    "B": "象",
+    "N": "马"
+  },
+  "a11y": {
+    "loading": "加载中",
+    "speechBubble": "{{name}} 说"
+  },
+  "nav": {
+    "label": "主菜单",
+    "map": "地图",
+    "puzzles": "谜题",
+    "revenge": "复仇",
+    "about": "关于"
+  },
+  "revengeToast": {
+    "analysing": "正在分析你的对局……准备复仇谜题。",
+    "ready_other": "{{count}} 道新的复仇谜题已就绪！"
+  }
 }

@@ -10,14 +10,17 @@ alwaysApply: true
 - Turkish (`tr`) is the default and the reference locale: add new keys to `src/i18n/locales/tr/*` first,
   then to every other locale. `src/i18n/i18n.test.ts` fails on missing/extra keys, missing plural forms,
   or mismatched `{{placeholders}}`.
-- Namespaces: `common` (UI), `bots` (names, taglines, speech lines per bot id), `coach` (post-game templates).
+- Namespaces: `common` (UI), `bots` (titles, taglines, speech lines per bot id — not names), `coach` (post-game templates),
+  `puzzles` (puzzle/revenge screens, theme names), `about` (legal/About page).
   Bot lines and coach templates are per language, never assembled from English fragments.
 - Core code returns keys + raw params (piece symbols, SAN, squares). The UI localizes them:
   piece names via `common:pieces.*`, notation via `useLocalizedSan()` (`common:notation`).
   Coach strings receive `context` = piece symbol so translators may add gendered variants (`hangingPiece_q`).
 - Use i18next plurals (`key_one`, `key_other`, plus `_few`/`_many` where the language needs them).
 - Adding a language: add it to `LOCALES` in `src/i18n/locales.ts` (mark `status: 'beta'` if machine-translated)
-  and create `src/i18n/locales/<code>/{common,bots,coach}.json`. Nothing else should need changing.
+  and create `src/i18n/locales/<code>/{common,bots,coach,puzzles,about}.json`. Nothing else should need changing.
 - Layout: CSS logical properties only (`margin-inline`, `padding-block`, `inset-inline-start`),
   no fixed widths on text, allow wrapping. The board stays `direction: ltr` even in RTL locales.
 - Locale files are lazy-loaded per language; never import a locale JSON statically from app code.
+- Bot proper names stay Turkish in every locale; render them with `lang="tr"`.
+- Beta locales show a "report translation error" mail link (locale + screen in the subject); keep it working when adding screens.
