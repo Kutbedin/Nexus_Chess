@@ -37,7 +37,7 @@ export function LevelMap({ map, progress, onSelect }: Props) {
                 <strong>{label}</strong>
                 {node.kind === 'boss' && <span className="badge">{t('map.boss')}</span>}
                 <span className="level-status">
-                  {!unlocked ? t('map.locked') : state ? t('map.stars', { count: state.stars }) : bot ? t(`bots:${bot.id}.tagline`) : ''}
+                  {!unlocked ? t('map.locked') : state?.stars ? t('map.stars', { count: state.stars }) : bot ? t(`bots:${bot.id}.tagline`) : ''}
                 </span>
               </div>
             </li>

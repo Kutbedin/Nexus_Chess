@@ -126,7 +126,7 @@ export class BotGameController {
   }
 
   private afterPlayerMove(move: PlayedMove): void {
-    const reaction = reactionForMove(move, this.botColor, this.session.isInCheck())
+    const reaction = reactionForMove(move, this.botColor, this.session.isInCheck()) ?? this.state.reaction
     this.update({ pendingPromotion: null, reaction })
     if (!this.finishIfOver()) this.scheduleBotMove()
   }

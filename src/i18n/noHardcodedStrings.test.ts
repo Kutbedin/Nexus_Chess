@@ -9,6 +9,7 @@ const sources = import.meta.glob<string>('../ui/**/*.tsx', { eager: true, query:
 
 const LETTER = /\p{L}{2,}/u
 const JSX_TEXT = />([^<>{}]+)</g
+const JS_KEYWORD = /^(return|const|let|if|else|export|function|interface|type)\b/
 const ATTRS = /\b(aria-label|title|placeholder|alt)="([^"]*)"/g
 
 describe('UI components', () => {
@@ -19,7 +20,7 @@ describe('UI components', () => {
       for (const m of code.matchAll(JSX_TEXT)) {
         const text = m[1].trim()
         // Skip TypeScript generics/comparisons that look like JSX text.
-        if (text && LETTER.test(text) && !/[=;()&|]/.test(text)) offenders.push(text)
+        if (text && LETTER.test(text) && !/[=;()&|]/.test(text) && !JS_KEYWORD.test(text)) offenders.push(text)
       }
       for (const m of code.matchAll(ATTRS)) if (LETTER.test(m[2])) offenders.push(`${m[1]}="${m[2]}"`)
       expect(offenders).toEqual([])

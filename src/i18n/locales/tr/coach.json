@@ -4,6 +4,6 @@
   "materialLoss_one": "{{moveNumber}}. hamledeki {{san}} sonrasında {{count}} puanlık malzeme kaybettin.",
   "materialLoss_other": "{{moveNumber}}. hamledeki {{san}} sonrasında {{count}} puanlık malzeme kaybettin.",
   "forkSuffered": "{{moveNumber}}. hamlede rakip {{san}} ile çatal yaptı: {{square}} karesindeki {{piece}} aynı anda {{targets}} karelerine saldırdı.",
-  "mateThreatAllowed": "{{moveNumber}}. hamledeki {{san}} sonrasında rakibin {{mateSan}} ile tek hamlede mat edebilirdi. Her hamleden önce rakibin şah çekebileceği hamlelere bak.",
+  "mateThreatAllowed": "{{moveNumber}}. hamledeki {{san}} sonrasında rakip {{mateSan}} ile tek hamlede mat edebilirdi. Her hamleden önce rakibin şah çekebileceği hamlelere bak.",
   "clean": "Belirgin bir taktik hata bulamadım. Harika oyun!"
 }

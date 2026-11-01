@@ -5,6 +5,7 @@ import type { BotPersonality } from '../../core/bots/types'
 import type { EnginePort } from '../../core/engine/types'
 import type { GameResult } from '../../core/progression/levelMap'
 import type { Color, Square } from '../../core/game/types'
+import type { BotGameController } from '../../core/game/botGameController'
 import { seededRng } from '../../core/random'
 import { PromotionPicker } from '../components/PromotionPicker'
 import { SpeechBubble } from '../components/SpeechBubble'
@@ -24,15 +25,27 @@ const SELECTED_STYLE = { background: 'var(--highlight-selected)' }
 const TARGET_STYLE = { background: 'radial-gradient(circle, var(--highlight-target) 22%, transparent 24%)' }
 const CHECK_STYLE = { background: 'radial-gradient(circle, var(--highlight-check) 40%, transparent 70%)' }
 
-export function GameScreen({ bot, engine, playerColor = 'w', onFinished, onExit }: Props) {
-  const { t } = useTranslation(['common', 'coach', 'bots'])
-  const formatSan = useLocalizedSan()
+export function GameScreen(props: Props) {
+  const { bot, engine, playerColor = 'w' } = props
   const [gameNo, setGameNo] = useState(0)
-  const [selected, setSelected] = useState<Square | null>(null)
   const controller = useBotGame(
     () => ({ bot, engine, playerColor, rng: seededRng(Date.now()), minThinkMs: 400 }),
     `${bot.id}-${playerColor}-${gameNo}`,
   )
+  if (!controller) return <div className="spinner" aria-busy="true" />
+  return <GameView key={gameNo} {...props} playerColor={playerColor} controller={controller} onRestart={() => setGameNo((n) => n + 1)} />
+}
+
+interface GameViewProps extends Props {
+  playerColor: Color
+  controller: BotGameController
+  onRestart: () => void
+}
+
+function GameView({ bot, playerColor, controller, onFinished, onExit, onRestart }: GameViewProps) {
+  const { t } = useTranslation(['common', 'coach', 'bots'])
+  const formatSan = useLocalizedSan()
+  const [selected, setSelected] = useState<Square | null>(null)
   const state = controller.getState()
   const reported = useRef(false)
 
@@ -81,11 +94,6 @@ export function GameScreen({ bot, engine, playerColor = 'w', onFinished, onExit 
     setSelected(controller.ownsPiece(square) ? square : null)
   }
 
-  const restart = () => {
-    reported.current = false
-    setSelected(null)
-    setGameNo((n) => n + 1)
-  }
 
   const botName = t(`bots:${bot.id}.name`)
 
@@ -134,7 +142,7 @@ export function GameScreen({ bot, engine, playerColor = 'w', onFinished, onExit 
 
       <div className="game-actions">
         {result ? (
-          <button type="button" className="primary-button" onClick={restart}>
+          <button type="button" className="primary-button" onClick={onRestart}>
             {t('game.playAgain')}
           </button>
         ) : (

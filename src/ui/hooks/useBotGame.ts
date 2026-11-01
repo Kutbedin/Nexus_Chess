@@ -1,23 +1,32 @@
-import { useEffect, useState, useSyncExternalStore } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { BotGameController, type BotGameOptions } from '../../core/game/botGameController'
 
-/** Creates a controller per `gameKey` and subscribes React to it. */
-export function useBotGame(createOptions: () => BotGameOptions, gameKey: string): BotGameController {
-  const [current, setCurrent] = useState(() => ({ key: gameKey, controller: new BotGameController(createOptions()) }))
-  if (current.key !== gameKey) {
-    // Recreate during render so the new game is visible on the same commit.
-    setCurrent({ key: gameKey, controller: new BotGameController(createOptions()) })
-  }
-  const { controller } = current
+const noopSubscribe = () => () => {}
+
+/**
+ * Owns one controller per `gameKey`. The controller is created inside the effect so that
+ * StrictMode's mount → unmount → mount cycle never leaves the UI bound to a disposed instance.
+ */
+export function useBotGame(createOptions: () => BotGameOptions, gameKey: string): BotGameController | null {
+  const factory = useRef(createOptions)
+  useLayoutEffect(() => {
+    factory.current = createOptions
+  })
+  const [controller, setController] = useState<BotGameController | null>(null)
 
   useEffect(() => {
-    controller.start()
-    return () => controller.dispose()
-  }, [controller])
+    const c = new BotGameController(factory.current())
+    setController(c)
+    c.start()
+    return () => {
+      c.dispose()
+      setController((prev) => (prev === c ? null : prev))
+    }
+  }, [gameKey])
 
   useSyncExternalStore(
-    (cb) => controller.subscribe(cb),
-    () => controller.getState(),
+    controller ? (cb) => controller.subscribe(cb) : noopSubscribe,
+    () => controller?.getState() ?? null,
   )
   return controller
 }
