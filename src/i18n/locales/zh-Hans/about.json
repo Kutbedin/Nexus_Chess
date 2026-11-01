@@ -1,0 +1,29 @@
+{
+  "title": "关于",
+  "intro": "Nexus Chess 是一款国际象棋游戏，通过与机器人对弈并从自己的错误中学习来帮助你提高。",
+  "appLicense": {
+    "title": "许可",
+    "body": "© {{year}} Nexus Chess。保留所有权利。应用程序代码为专有软件。"
+  },
+  "engine": {
+    "title": "象棋引擎",
+    "body": "本应用将 {{name}} 象棋引擎作为独立程序使用，该引擎采用 {{license}}（GNU 通用公共许可证第 3 版）授权。Stockfish 是自由软件：你可以依照该许可证的条款复制、修改和再分发它。",
+    "version": "版本",
+    "build": "构建",
+    "source": "源代码",
+    "upstream": "上游项目",
+    "licenseText": "许可证文本",
+    "gplLink": "GPLv3 全文",
+    "offer": "对于我们分发的引擎构建，我们将在至少三年内向任何索取者提供完整源代码：<mail>{{email}}</mail>"
+  },
+  "thirdParty": {
+    "title": "第三方组件"
+  },
+  "privacy": {
+    "title": "隐私",
+    "body": "无需注册账号；你的进度只保存在本设备上。使用统计不使用 Cookie 且完全匿名；不会发送任何个人数据、姓名或对局内容。在学校模式下，统计功能完全关闭。"
+  },
+  "contact": {
+    "title": "联系方式"
+  }
+}

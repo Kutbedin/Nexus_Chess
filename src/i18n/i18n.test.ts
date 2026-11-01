@@ -71,12 +71,14 @@ describe('locale files', () => {
     }
   }
 
-  it('every bot has a name, tagline, and lines for every reaction in every locale', () => {
+  it('every bot has a title, tagline, and lines for every reaction in every locale; names are not translated', () => {
     const events: ReactionEvent[] = ['greeting', 'botCaptures', 'playerCaptures', 'botGivesCheck', 'playerGivesCheck', 'botWins', 'botLoses', 'draw']
     for (const locale of SUPPORTED_LOCALES) {
       const bots = flatten(resource(locale, 'bots'))
       for (const bot of BOTS) {
-        expect(bots.has(`${getBot(bot.id).id}.name`)).toBe(true)
+        expect(bots.has(`${getBot(bot.id).id}.title`), `${locale} ${bot.id} title`).toBe(true)
+        expect(bots.has(`${bot.id}.tagline`), `${locale} ${bot.id} tagline`).toBe(true)
+        expect(bots.has(`${bot.id}.name`), `${locale} ${bot.id}: proper names live in the roster`).toBe(false)
         for (const e of events) expect(Array.isArray(bots.get(`${bot.id}.lines.${e}`)), `${locale} ${bot.id} ${e}`).toBe(true)
       }
     }

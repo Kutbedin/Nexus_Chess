@@ -1,0 +1,29 @@
+{
+  "title": "Hakkında",
+  "intro": "Nexus Chess, botlarla oynayarak ve kendi hatalarından öğrenerek gelişmen için tasarlanmış bir satranç oyunudur.",
+  "appLicense": {
+    "title": "Lisans",
+    "body": "© {{year}} Nexus Chess. Tüm hakları saklıdır. Uygulama kodu özel mülktür."
+  },
+  "engine": {
+    "title": "Satranç motoru",
+    "body": "Bu uygulama, {{license}} (GNU Genel Kamu Lisansı sürüm 3) ile lisanslanan {{name}} satranç motorunu ayrı bir program olarak kullanır. Stockfish özgür yazılımdır; onu bu lisansın koşulları altında kopyalayabilir, değiştirebilir ve dağıtabilirsin.",
+    "version": "Sürüm",
+    "build": "Derleme",
+    "source": "Kaynak kodu",
+    "upstream": "Asıl proje",
+    "licenseText": "Lisans metni",
+    "gplLink": "GPLv3 tam metni",
+    "offer": "Dağıttığımız motor derlemesinin tam kaynak kodunu en az üç yıl boyunca talep eden herkese sağlarız: <mail>{{email}}</mail>"
+  },
+  "thirdParty": {
+    "title": "Üçüncü taraf bileşenler"
+  },
+  "privacy": {
+    "title": "Gizlilik",
+    "body": "Hesap gerekmez; ilerlemen yalnızca bu cihazda saklanır. Kullanım istatistikleri çerezsiz ve anonimdir; kişisel veri, ad veya oyun içeriği gönderilmez. Okul modunda istatistikler tamamen kapalıdır."
+  },
+  "contact": {
+    "title": "İletişim"
+  }
+}

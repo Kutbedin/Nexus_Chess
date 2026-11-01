@@ -1,0 +1,29 @@
+{
+  "title": "Acerca de",
+  "intro": "Nexus Chess es un juego de ajedrez diseñado para que mejores jugando contra bots y aprendiendo de tus propios errores.",
+  "appLicense": {
+    "title": "Licencia",
+    "body": "© {{year}} Nexus Chess. Todos los derechos reservados. El código de la aplicación es propietario."
+  },
+  "engine": {
+    "title": "Motor de ajedrez",
+    "body": "Esta aplicación usa el motor de ajedrez {{name}} como programa independiente, con licencia {{license}} (GNU General Public License versión 3). Stockfish es software libre: puedes copiarlo, modificarlo y redistribuirlo según los términos de esa licencia.",
+    "version": "Versión",
+    "build": "Compilación",
+    "source": "Código fuente",
+    "upstream": "Proyecto original",
+    "licenseText": "Texto de la licencia",
+    "gplLink": "Texto completo de la GPLv3",
+    "offer": "Proporcionaremos el código fuente completo de la compilación del motor que distribuimos a quien lo solicite, durante al menos tres años: <mail>{{email}}</mail>"
+  },
+  "thirdParty": {
+    "title": "Componentes de terceros"
+  },
+  "privacy": {
+    "title": "Privacidad",
+    "body": "No necesitas cuenta; tu progreso se guarda solo en este dispositivo. Las estadísticas de uso son anónimas y sin cookies; no se envían datos personales, nombres ni contenido de las partidas. En el modo escuela, las estadísticas están completamente desactivadas."
+  },
+  "contact": {
+    "title": "Contacto"
+  }
+}

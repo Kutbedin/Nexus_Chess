@@ -1,44 +1,122 @@
 {
   "minik": {
-    "name": "Pequeño Max",
-    "tagline": "Acaba de empezar en el ajedrez y le encanta capturar piezas.",
+    "title": "El Novato",
+    "tagline": "Acaba de empezar. Protege sus piezas pero rara vez ve dos jugadas por delante.",
     "lines": {
-      "greeting": ["¡Hola! ¿Jugamos juntos?"],
-      "botCaptures": ["¡Hop! Esta pieza ahora es mía."],
-      "playerCaptures": ["¡Uy, no lo vi!"],
-      "botGivesCheck": ["¡Jaque! No te lo esperabas, ¿eh?"],
-      "playerGivesCheck": ["¡Ay, mi rey está en peligro!"],
-      "botWins": ["¡Gané! ¿Otra partida?"],
-      "botLoses": ["¡Felicidades, jugaste muy bien!"],
-      "draw": ["¡Tablas! Los dos jugamos bien."]
+      "greeting": [
+        "¡Hola! ¿Jugamos juntos?"
+      ],
+      "botCaptures": [
+        "¡Hop! Esta pieza ahora es mía."
+      ],
+      "playerCaptures": [
+        "¡Uy, no lo vi!"
+      ],
+      "botGivesCheck": [
+        "¡Jaque! No te lo esperabas, ¿eh?"
+      ],
+      "playerGivesCheck": [
+        "¡Ay, mi rey está en peligro!"
+      ],
+      "botWins": [
+        "¡Gané! ¿Otra partida?"
+      ],
+      "botLoses": [
+        "¡Felicidades, jugaste muy bien!"
+      ],
+      "draw": [
+        "¡Tablas! Los dos jugamos bien."
+      ]
     }
   },
   "atli": {
-    "name": "Nora la Jinete",
+    "title": "Maestra de los caballos",
     "tagline": "Le encantan los ataques sorpresa con sus caballos.",
     "lines": {
-      "greeting": ["Mis caballos están listos. ¿Y los tuyos?"],
-      "botCaptures": ["Mi caballo lo vio hace rato."],
-      "playerCaptures": ["Mmm, astuto."],
-      "botGivesCheck": ["¡Jaque! Los caballos salen de cualquier lado."],
-      "playerGivesCheck": ["Nada mal, pero esto no ha terminado."],
-      "botWins": ["¡Mis caballos ganan otra vez!"],
-      "botLoses": ["Esta vez ganas tú. ¡Quiero la revancha!"],
-      "draw": ["Tablas. Bonita lucha."]
+      "greeting": [
+        "Mis caballos están listos. ¿Y los tuyos?"
+      ],
+      "botCaptures": [
+        "Mi caballo lo vio hace rato."
+      ],
+      "playerCaptures": [
+        "Mmm, astuto."
+      ],
+      "botGivesCheck": [
+        "¡Jaque! Los caballos salen de cualquier lado."
+      ],
+      "playerGivesCheck": [
+        "Nada mal, pero esto no ha terminado."
+      ],
+      "botWins": [
+        "¡Mis caballos ganan otra vez!"
+      ],
+      "botLoses": [
+        "Esta vez ganas tú. ¡Quiero la revancha!"
+      ],
+      "draw": [
+        "Tablas. Bonita lucha."
+      ]
+    }
+  },
+  "filiz": {
+    "title": "Maestra de las diagonales",
+    "tagline": "Coloca sus alfiles en las grandes diagonales y espera con paciencia.",
+    "lines": {
+      "greeting": [
+        "Mis alfiles están en las grandes diagonales, esperando con paciencia."
+      ],
+      "botCaptures": [
+        "La diagonal estaba abierta, así que capturé."
+      ],
+      "playerCaptures": [
+        "Mmm, no contaba con eso."
+      ],
+      "botGivesCheck": [
+        "¡Jaque! Directo por la diagonal."
+      ],
+      "playerGivesCheck": [
+        "Tranquilo, tengo cuidado."
+      ],
+      "botWins": [
+        "¡La paciencia gana!"
+      ],
+      "botLoses": [
+        "Estuviste genial. ¡Felicidades!"
+      ],
+      "draw": [
+        "Tablas. Una partida equilibrada."
+      ]
     }
   },
   "sultan": {
-    "name": "Sultán Castillo",
-    "tagline": "El jefe del Mundo 1. No entrega su castillo fácilmente.",
+    "title": "Jefe del Mundo 1",
+    "tagline": "No entrega su castillo fácilmente.",
     "lines": {
-      "greeting": ["Así que llegaste hasta mi castillo… Veamos qué sabes hacer."],
-      "botCaptures": ["Los muros de mi castillo son fuertes."],
-      "playerCaptures": ["¿Capturaste una pieza? El castillo sigue en pie."],
-      "botGivesCheck": ["¡Jaque! Estás ante el Sultán."],
-      "playerGivesCheck": ["Qué atrevido…"],
-      "botWins": ["El castillo no cayó. ¡Vuelve más fuerte!"],
-      "botLoses": ["El castillo ha caído… ¡Eres un verdadero campeón!"],
-      "draw": ["Tablas. Tú y el castillo seguís en pie."]
+      "greeting": [
+        "Así que llegaste hasta mi castillo… Veamos qué sabes hacer."
+      ],
+      "botCaptures": [
+        "Los muros de mi castillo son fuertes."
+      ],
+      "playerCaptures": [
+        "¿Capturaste una pieza? El castillo sigue en pie."
+      ],
+      "botGivesCheck": [
+        "¡Jaque! Estás ante el Sultán."
+      ],
+      "playerGivesCheck": [
+        "Qué atrevido…"
+      ],
+      "botWins": [
+        "El castillo no cayó. ¡Vuelve más fuerte!"
+      ],
+      "botLoses": [
+        "El castillo ha caído… ¡Eres un verdadero campeón!"
+      ],
+      "draw": [
+        "Tablas. Tú y el castillo seguís en pie."
+      ]
     }
   }
 }

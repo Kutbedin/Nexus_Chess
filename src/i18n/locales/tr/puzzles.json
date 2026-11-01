@@ -1,0 +1,61 @@
+{
+  "title": "Bulmacalar",
+  "intro": "Kolaydan zora sıralanmış paketler. Bir paketin yarısını çözünce sıradaki açılır. İnternet olmadan da çalışır.",
+  "total_one": "{{count}} bulmaca",
+  "total_other": "{{count}} bulmaca",
+  "loadError": "Bulmacalar yüklenemedi. Bağlantını kontrol edip tekrar dene.",
+  "attribution": "Bulmacalar: Lichess bulmaca veritabanı (CC0).",
+  "backToMap": "Haritaya dön",
+  "backToPacks": "Paketlere dön",
+  "nodeProgress": "{{solved}} / {{count}}",
+  "nodeDone": "Durak tamamlandı! Yeni bölüm açıldı.",
+  "packDone": "Bu paketteki tüm bulmacaları çözdün!",
+  "ratingChip": "Puan {{rating}}",
+  "pack": {
+    "name": "Paket {{n}}",
+    "rating": "Puan {{min}}–{{max}}",
+    "progress": "{{solved}} / {{count}} çözüldü",
+    "locked": "Önceki paketin yarısını çöz"
+  },
+  "filter": {
+    "label": "Tema",
+    "all": "Tüm temalar"
+  },
+  "solver": {
+    "whiteToMove": "Beyaz oynar ve kazanır",
+    "blackToMove": "Siyah oynar ve kazanır",
+    "wrong": "Bu değil, tekrar dene!",
+    "correct": "Doğru! Devam et…",
+    "solved": "Çözüldü!",
+    "solvedFirstTry": "Harika! İlk denemede çözdün.",
+    "revealed": "Doğru hamle işaretlendi. Bir dahakine!",
+    "hint": "İpucu",
+    "showSolution": "Çözümü göster",
+    "next": "Sıradaki"
+  },
+  "revenge": {
+    "title": "İntikam bulmacaları",
+    "progress": "{{n}} / {{count}}",
+    "emptyNever": "Henüz intikam bulmacan yok. Botlarla oyna; kaçırdığın kazandıran hamleler buraya gelecek.",
+    "emptyAllDone": "Bugünlük intikam tamam! Yeni tekrarlar zamanı gelince burada olacak.",
+    "explainer": "Yalnızca tek bir net kazandıran hamlenin olduğu konumlar seçilir. Doğru çözdükçe tekrarlar seyrekleşir (1, 3, 7, 16, 35 gün).",
+    "story": {
+      "missedMate_one": "{{bot}} karşısında kaçırdığın mat! {{moveNumber}}. hamlede {{san}} oynamıştın; oysa {{count}} hamlede mat vardı. Şimdi bul!",
+      "missedMate_other": "{{bot}} karşısında kaçırdığın mat! {{moveNumber}}. hamlede {{san}} oynamıştın; oysa {{count}} hamlede mat vardı. Şimdi bul!",
+      "missedWin": "{{bot}} karşısında kaçırdığın fırsat! {{moveNumber}}. hamlede {{san}} oynamıştın; kazandıran tek hamle başkaydı. Şimdi bul!"
+    }
+  },
+  "themes": {
+    "backRankMate": "Arka sıra matı",
+    "mateIn1": "1 hamlede mat",
+    "mateIn2": "2 hamlede mat",
+    "fork": "Çatal",
+    "pin": "Açmaz",
+    "skewer": "Şiş",
+    "discoveredAttack": "Açarak saldırı",
+    "hangingPiece": "Korumasız taş",
+    "deflection": "Saptırma",
+    "trappedPiece": "Kapana kısılmış taş",
+    "promotion": "Terfi"
+  }
+}

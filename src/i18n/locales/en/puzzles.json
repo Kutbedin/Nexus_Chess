@@ -1,0 +1,61 @@
+{
+  "title": "Puzzles",
+  "intro": "Packs go from easy to hard. Solve half of a pack to open the next one. Works offline too.",
+  "total_one": "{{count}} puzzle",
+  "total_other": "{{count}} puzzles",
+  "loadError": "Puzzles couldn't be loaded. Check your connection and try again.",
+  "attribution": "Puzzles: Lichess puzzle database (CC0).",
+  "backToMap": "Back to map",
+  "backToPacks": "Back to packs",
+  "nodeProgress": "{{solved}} / {{count}}",
+  "nodeDone": "Stop complete! The next level is open.",
+  "packDone": "You solved every puzzle in this pack!",
+  "ratingChip": "Rating {{rating}}",
+  "pack": {
+    "name": "Pack {{n}}",
+    "rating": "Rating {{min}}–{{max}}",
+    "progress": "{{solved}} / {{count}} solved",
+    "locked": "Solve half of the previous pack"
+  },
+  "filter": {
+    "label": "Theme",
+    "all": "All themes"
+  },
+  "solver": {
+    "whiteToMove": "White to play and win",
+    "blackToMove": "Black to play and win",
+    "wrong": "Not that one, try again!",
+    "correct": "Correct! Keep going…",
+    "solved": "Solved!",
+    "solvedFirstTry": "Great! Solved on the first try.",
+    "revealed": "The right move is marked. Next time!",
+    "hint": "Hint",
+    "showSolution": "Show solution",
+    "next": "Next"
+  },
+  "revenge": {
+    "title": "Revenge puzzles",
+    "progress": "{{n}} / {{count}}",
+    "emptyNever": "No revenge puzzles yet. Play the bots; winning moves you miss will show up here.",
+    "emptyAllDone": "Revenge done for today! New reviews appear here when they're due.",
+    "explainer": "Only positions with a single clear winning move are chosen. Each correct answer spaces reviews out (1, 3, 7, 16, 35 days).",
+    "story": {
+      "missedMate_one": "The mate you missed against {{bot}}! On move {{moveNumber}} you played {{san}}, but there was mate in {{count}}. Find it now!",
+      "missedMate_other": "The mate you missed against {{bot}}! On move {{moveNumber}} you played {{san}}, but there was mate in {{count}}. Find it now!",
+      "missedWin": "The chance you missed against {{bot}}! On move {{moveNumber}} you played {{san}}, but one move was clearly winning. Find it now!"
+    }
+  },
+  "themes": {
+    "backRankMate": "Back-rank mate",
+    "mateIn1": "Mate in 1",
+    "mateIn2": "Mate in 2",
+    "fork": "Fork",
+    "pin": "Pin",
+    "skewer": "Skewer",
+    "discoveredAttack": "Discovered attack",
+    "hangingPiece": "Hanging piece",
+    "deflection": "Deflection",
+    "trappedPiece": "Trapped piece",
+    "promotion": "Promotion"
+  }
+}

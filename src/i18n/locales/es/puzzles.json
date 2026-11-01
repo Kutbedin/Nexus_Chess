@@ -1,0 +1,63 @@
+{
+  "title": "Problemas",
+  "intro": "Los paquetes van de fácil a difícil. Resuelve la mitad de un paquete para abrir el siguiente. También funciona sin conexión.",
+  "total_one": "{{count}} problema",
+  "total_many": "{{count}} problemas",
+  "total_other": "{{count}} problemas",
+  "loadError": "No se pudieron cargar los problemas. Revisa tu conexión.",
+  "attribution": "Problemas: base de datos de problemas de Lichess (CC0).",
+  "backToMap": "Volver al mapa",
+  "backToPacks": "Volver a los paquetes",
+  "nodeProgress": "{{solved}} / {{count}}",
+  "nodeDone": "¡Parada completada! El siguiente nivel está abierto.",
+  "packDone": "¡Resolviste todos los problemas de este paquete!",
+  "ratingChip": "Puntuación {{rating}}",
+  "pack": {
+    "name": "Paquete {{n}}",
+    "rating": "Puntuación {{min}}–{{max}}",
+    "progress": "{{solved}} / {{count}} resueltos",
+    "locked": "Resuelve la mitad del paquete anterior"
+  },
+  "filter": {
+    "label": "Tema",
+    "all": "Todos los temas"
+  },
+  "solver": {
+    "whiteToMove": "Juegan blancas y ganan",
+    "blackToMove": "Juegan negras y ganan",
+    "wrong": "Esa no es, ¡inténtalo de nuevo!",
+    "correct": "¡Correcto! Sigue…",
+    "solved": "¡Resuelto!",
+    "solvedFirstTry": "¡Genial! Resuelto al primer intento.",
+    "revealed": "La jugada correcta está marcada. ¡La próxima vez!",
+    "hint": "Pista",
+    "showSolution": "Ver solución",
+    "next": "Siguiente"
+  },
+  "revenge": {
+    "title": "Problemas de revancha",
+    "progress": "{{n}} / {{count}}",
+    "emptyNever": "Aún no hay problemas de revancha. Juega contra los bots; las jugadas ganadoras que te pierdas aparecerán aquí.",
+    "emptyAllDone": "¡Revancha lista por hoy! Los nuevos repasos aparecerán aquí cuando toquen.",
+    "explainer": "Solo se eligen posiciones con una única jugada ganadora clara. Cada acierto espacia los repasos (1, 3, 7, 16, 35 días).",
+    "story": {
+      "missedMate_one": "¡El mate que se te escapó contra {{bot}}! En la jugada {{moveNumber}} jugaste {{san}}, pero había mate en {{count}}. ¡Encuéntralo!",
+      "missedMate_many": "¡El mate que se te escapó contra {{bot}}! En la jugada {{moveNumber}} jugaste {{san}}, pero había mate en {{count}}. ¡Encuéntralo!",
+      "missedMate_other": "¡El mate que se te escapó contra {{bot}}! En la jugada {{moveNumber}} jugaste {{san}}, pero había mate en {{count}}. ¡Encuéntralo!",
+      "missedWin": "¡La oportunidad que se te escapó contra {{bot}}! En la jugada {{moveNumber}} jugaste {{san}}, pero una jugada ganaba claramente. ¡Encuéntrala!"
+    }
+  },
+  "themes": {
+    "backRankMate": "Mate del pasillo",
+    "mateIn1": "Mate en 1",
+    "mateIn2": "Mate en 2",
+    "fork": "Horquilla",
+    "pin": "Clavada",
+    "skewer": "Ensartada",
+    "discoveredAttack": "Ataque a la descubierta",
+    "hangingPiece": "Pieza colgada",
+    "deflection": "Desviación",
+    "trappedPiece": "Pieza atrapada",
+    "promotion": "Coronación"
+  }
+}

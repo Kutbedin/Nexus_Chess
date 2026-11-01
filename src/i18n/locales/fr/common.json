@@ -6,18 +6,22 @@
   "language": {
     "label": "Langue",
     "beta": "bêta",
-    "betaNotice": "Cette traduction a été générée automatiquement et attend une relecture."
+    "betaNotice": "Cette traduction a été générée automatiquement et attend une relecture.",
+    "reportError": "Signaler une erreur de traduction",
+    "reportTemplate": "Langue : {{locale}}\nÉcran : {{screen}}\n\nTexte incorrect :\n\nCorrection proposée :\n"
   },
   "map": {
     "title": "Monde 1",
     "locked": "Verrouillé",
     "boss": "Boss",
     "puzzles": "Étape problèmes",
-    "puzzlesSoon": "Les problèmes arrivent bientôt ici.",
     "play": "Jouer",
     "stars_one": "{{count}} étoile",
     "stars_many": "{{count}} étoiles",
-    "stars_other": "{{count}} étoiles"
+    "stars_other": "{{count}} étoiles",
+    "puzzleGoal_one": "{{count}} problème : {{theme}}",
+    "puzzleGoal_many": "{{count}} problèmes : {{theme}}",
+    "puzzleGoal_other": "{{count}} problèmes : {{theme}}"
   },
   "game": {
     "backToMap": "Retour à la carte",
@@ -30,8 +34,15 @@
     "promotionTitle": "Promouvoir le pion en…",
     "cancel": "Annuler",
     "youPlay": "Toi : {{color}}",
-    "color": { "w": "Blancs", "b": "Noirs" },
-    "result": { "win": "Tu as gagné !", "loss": "Tu as perdu", "draw": "Nulle" },
+    "color": {
+      "w": "Blancs",
+      "b": "Noirs"
+    },
+    "result": {
+      "win": "Tu as gagné !",
+      "loss": "Tu as perdu",
+      "draw": "Nulle"
+    },
     "reason": {
       "checkmate": "Échec et mat",
       "resigned": "Abandon",
@@ -43,7 +54,36 @@
     },
     "engineError": "Le moteur n'a pas pu être chargé. Essaie de recharger la page."
   },
-  "pieces": { "p": "pion", "n": "cavalier", "b": "fou", "r": "tour", "q": "dame", "k": "roi" },
-  "notation": { "K": "R", "Q": "D", "R": "T", "B": "F", "N": "C" },
-  "a11y": { "loading": "Chargement", "speechBubble": "{{name}} dit" }
+  "pieces": {
+    "p": "pion",
+    "n": "cavalier",
+    "b": "fou",
+    "r": "tour",
+    "q": "dame",
+    "k": "roi"
+  },
+  "notation": {
+    "K": "R",
+    "Q": "D",
+    "R": "T",
+    "B": "F",
+    "N": "C"
+  },
+  "a11y": {
+    "loading": "Chargement",
+    "speechBubble": "{{name}} dit"
+  },
+  "nav": {
+    "label": "Menu principal",
+    "map": "Carte",
+    "puzzles": "Problèmes",
+    "revenge": "Revanche",
+    "about": "À propos"
+  },
+  "revengeToast": {
+    "analysing": "Analyse de ta partie… préparation des problèmes de revanche.",
+    "ready_one": "{{count}} nouveau problème de revanche est prêt !",
+    "ready_many": "{{count}} nouveaux problèmes de revanche sont prêts !",
+    "ready_other": "{{count}} nouveaux problèmes de revanche sont prêts !"
+  }
 }

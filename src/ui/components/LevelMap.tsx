@@ -10,7 +10,7 @@ interface Props {
 
 /** Duolingo-style vertical path; nodes zig-zag via CSS using the index. */
 export function LevelMap({ map, progress, onSelect }: Props) {
-  const { t } = useTranslation(['common', 'bots'])
+  const { t } = useTranslation(['common', 'bots', 'puzzles'])
   return (
     <section className="level-map" aria-labelledby="map-title">
       <h2 id="map-title">{t('map.title')}</h2>
@@ -19,7 +19,7 @@ export function LevelMap({ map, progress, onSelect }: Props) {
           const unlocked = isUnlocked(map, progress, node.id)
           const state = progress.nodes[node.id]
           const bot = node.botId ? getBot(node.botId) : null
-          const label = bot ? t(`bots:${bot.id}.name`) : t('map.puzzles')
+          const label = bot ? bot.name : t('map.puzzles')
           return (
             <li key={node.id} className={`level-node kind-${node.kind}`} style={{ '--offset': i % 2 ? 1 : -1 } as React.CSSProperties}>
               <button
@@ -34,10 +34,16 @@ export function LevelMap({ map, progress, onSelect }: Props) {
                 </span>
               </button>
               <div className="level-label" id={`${node.id}-desc`}>
-                <strong>{label}</strong>
+                <strong lang={bot ? 'tr' : undefined}>{label}</strong>
                 {node.kind === 'boss' && <span className="badge">{t('map.boss')}</span>}
                 <span className="level-status">
-                  {!unlocked ? t('map.locked') : state?.stars ? t('map.stars', { count: state.stars }) : bot ? t(`bots:${bot.id}.tagline`) : ''}
+                  {!unlocked
+                    ? t('map.locked')
+                    : state?.stars
+                      ? t('map.stars', { count: state.stars })
+                      : bot
+                        ? t(`bots:${bot.id}.title`)
+                        : t('map.puzzleGoal', { count: node.puzzleCount ?? 0, theme: t(`puzzles:themes.${node.puzzleTheme}`) })}
                 </span>
               </div>
             </li>
