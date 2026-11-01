@@ -1,0 +1,16 @@
+---
+description: Testing focus
+globs: src/**/*.test.ts,src/**/*.test.tsx
+alwaysApply: false
+---
+
+# Testing rules
+
+- Test our own logic: game session/controller state, bot move selection, opening books, progression,
+  feature extractor and coach output, revenge-puzzle selection, spaced repetition, puzzle import, i18n completeness.
+- Test the UI-to-engine integration for special moves: promotion (piece picker, no auto-queen),
+  castling (king two squares, engine `e1g1`), en passant (captured pawn removed), engine promotions (`a2a1q`).
+- Do NOT re-test chess.js move legality or draw rules; it is the rules oracle.
+- Use `FakeEngine` (`src/test/fakeEngine.ts`) and `seededRng` — no real Stockfish, no `Math.random()` in tests.
+- Prefer FEN fixtures that isolate the behaviour under test.
+- `npm run check` (lint + typecheck + tests) must pass before pushing; CI runs the same plus `npm run build`.

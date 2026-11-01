@@ -1,0 +1,8 @@
+{
+  "title": "教练笔记",
+  "hangingPiece": "第 {{moveNumber}} 回合走 {{san}} 之后，你在 {{square}} 的{{piece}}无人保护。每步棋之前，先检查你的棋子是否受到保护。",
+  "materialLoss_other": "第 {{moveNumber}} 回合走 {{san}} 之后，你损失了 {{count}} 分子力。",
+  "forkSuffered": "第 {{moveNumber}} 回合，对手走 {{san}} 形成双重攻击：{{square}} 的{{piece}}同时攻击 {{targets}}。",
+  "mateThreatAllowed": "第 {{moveNumber}} 回合走 {{san}} 之后，对手可以走 {{mateSan}} 一步将死。每步棋之前，先看看对手所有的将军着法。",
+  "clean": "没有发现明显的战术失误。下得好！"
+}

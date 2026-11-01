@@ -1,0 +1,48 @@
+{
+  "app": {
+    "title": "Nexus Schach",
+    "tagline": "Spiel gegen Bots, steig im Level auf, lerne aus deinen Fehlern."
+  },
+  "language": {
+    "label": "Sprache",
+    "beta": "Beta",
+    "betaNotice": "Diese Übersetzung wurde maschinell erstellt und wartet auf eine Überprüfung."
+  },
+  "map": {
+    "title": "Welt 1",
+    "locked": "Gesperrt",
+    "boss": "Boss",
+    "puzzles": "Aufgaben-Station",
+    "puzzlesSoon": "Hier gibt es bald Schachaufgaben.",
+    "play": "Spielen",
+    "stars_one": "{{count}} Stern",
+    "stars_other": "{{count}} Sterne"
+  },
+  "game": {
+    "backToMap": "Zurück zur Karte",
+    "yourTurn": "Du bist am Zug",
+    "botThinking": "{{name}} denkt nach…",
+    "check": "Schach!",
+    "resign": "Aufgeben",
+    "playAgain": "Nochmal spielen",
+    "moves": "Züge",
+    "promotionTitle": "Bauer umwandeln in…",
+    "cancel": "Abbrechen",
+    "youPlay": "Du: {{color}}",
+    "color": { "w": "Weiß", "b": "Schwarz" },
+    "result": { "win": "Du hast gewonnen!", "loss": "Du hast verloren", "draw": "Remis" },
+    "reason": {
+      "checkmate": "Schachmatt",
+      "resigned": "Aufgabe",
+      "stalemate": "Patt",
+      "insufficient-material": "Ungenügendes Material",
+      "threefold-repetition": "Dreifache Stellungswiederholung",
+      "fifty-move": "50-Züge-Regel",
+      "agreement": "Einigung"
+    },
+    "engineError": "Die Engine konnte nicht geladen werden. Bitte lade die Seite neu."
+  },
+  "pieces": { "p": "Bauer", "n": "Springer", "b": "Läufer", "r": "Turm", "q": "Dame", "k": "König" },
+  "notation": { "K": "K", "Q": "D", "R": "T", "B": "L", "N": "S" },
+  "a11y": { "loading": "Wird geladen", "speechBubble": "{{name}} sagt" }
+}

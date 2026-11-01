@@ -1,0 +1,48 @@
+{
+  "app": {
+    "title": "Nexus Chess",
+    "tagline": "Play bots, level up, learn from your mistakes."
+  },
+  "language": {
+    "label": "Language",
+    "beta": "beta",
+    "betaNotice": "This translation was machine-generated and is awaiting review."
+  },
+  "map": {
+    "title": "World 1",
+    "locked": "Locked",
+    "boss": "Boss",
+    "puzzles": "Puzzle stop",
+    "puzzlesSoon": "Puzzles are coming here soon.",
+    "play": "Play",
+    "stars_one": "{{count}} star",
+    "stars_other": "{{count}} stars"
+  },
+  "game": {
+    "backToMap": "Back to map",
+    "yourTurn": "Your move",
+    "botThinking": "{{name}} is thinking…",
+    "check": "Check!",
+    "resign": "Resign",
+    "playAgain": "Play again",
+    "moves": "Moves",
+    "promotionTitle": "Promote your pawn to…",
+    "cancel": "Cancel",
+    "youPlay": "You: {{color}}",
+    "color": { "w": "White", "b": "Black" },
+    "result": { "win": "You won!", "loss": "You lost", "draw": "Draw" },
+    "reason": {
+      "checkmate": "Checkmate",
+      "resigned": "Resignation",
+      "stalemate": "Stalemate",
+      "insufficient-material": "Insufficient material",
+      "threefold-repetition": "Threefold repetition",
+      "fifty-move": "Fifty-move rule",
+      "agreement": "Agreement"
+    },
+    "engineError": "The engine failed to load. Try reloading the page."
+  },
+  "pieces": { "p": "pawn", "n": "knight", "b": "bishop", "r": "rook", "q": "queen", "k": "king" },
+  "notation": { "K": "K", "Q": "Q", "R": "R", "B": "B", "N": "N" },
+  "a11y": { "loading": "Loading", "speechBubble": "{{name}} says" }
+}

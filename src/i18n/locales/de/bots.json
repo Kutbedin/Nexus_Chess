@@ -1,0 +1,44 @@
+{
+  "minik": {
+    "name": "Kleiner Max",
+    "tagline": "Hat gerade mit Schach angefangen und schlägt am liebsten Figuren.",
+    "lines": {
+      "greeting": ["Hallo! Wollen wir zusammen spielen?"],
+      "botCaptures": ["Hopp! Die Figur gehört jetzt mir."],
+      "playerCaptures": ["Oh nein, das habe ich nicht gesehen!"],
+      "botGivesCheck": ["Schach! Damit hast du nicht gerechnet, oder?"],
+      "playerGivesCheck": ["Oje, mein König ist in Gefahr!"],
+      "botWins": ["Gewonnen! Noch eine Runde?"],
+      "botLoses": ["Glückwunsch, du hast toll gespielt!"],
+      "draw": ["Remis! Wir waren beide gut."]
+    }
+  },
+  "atli": {
+    "name": "Ritterliche Nora",
+    "tagline": "Liebt überraschende Angriffe mit ihren Springern.",
+    "lines": {
+      "greeting": ["Meine Springer sind bereit. Deine auch?"],
+      "botCaptures": ["Mein Springer hat das längst gesehen."],
+      "playerCaptures": ["Hm, clever."],
+      "botGivesCheck": ["Schach! Springer kommen von überall."],
+      "playerGivesCheck": ["Nicht schlecht, aber es ist noch nicht vorbei."],
+      "botWins": ["Meine Springer gewinnen wieder!"],
+      "botLoses": ["Diesmal hast du gewonnen. Ich will Revanche!"],
+      "draw": ["Remis. Schöner Kampf."]
+    }
+  },
+  "sultan": {
+    "name": "Sultan Burg",
+    "tagline": "Der Boss von Welt 1. Gibt seine Burg nicht so leicht her.",
+    "lines": {
+      "greeting": ["Du hast es also bis zu meiner Burg geschafft… Zeig, was du kannst."],
+      "botCaptures": ["Meine Burgmauern sind stark."],
+      "playerCaptures": ["Eine Figur geschlagen? Die Burg steht noch."],
+      "botGivesCheck": ["Schach! Du stehst vor dem Sultan."],
+      "playerGivesCheck": ["Ganz schön mutig…"],
+      "botWins": ["Die Burg ist nicht gefallen. Komm stärker zurück!"],
+      "botLoses": ["Die Burg ist gefallen… Du bist ein echter Champion!"],
+      "draw": ["Remis. Du und die Burg, ihr steht beide noch."]
+    }
+  }
+}

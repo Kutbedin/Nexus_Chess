@@ -1,0 +1,48 @@
+{
+  "app": {
+    "title": "Nexus Satranç",
+    "tagline": "Botlarla oyna, seviye atla, hatalarından öğren."
+  },
+  "language": {
+    "label": "Dil",
+    "beta": "beta",
+    "betaNotice": "Bu dilin çevirisi otomatik yapıldı ve gözden geçirilmeyi bekliyor."
+  },
+  "map": {
+    "title": "Dünya 1",
+    "locked": "Kilitli",
+    "boss": "Boss",
+    "puzzles": "Bulmaca durağı",
+    "puzzlesSoon": "Bulmacalar yakında burada.",
+    "play": "Oyna",
+    "stars_one": "{{count}} yıldız",
+    "stars_other": "{{count}} yıldız"
+  },
+  "game": {
+    "backToMap": "Haritaya dön",
+    "yourTurn": "Sıra sende",
+    "botThinking": "{{name}} düşünüyor…",
+    "check": "Şah!",
+    "resign": "Terk et",
+    "playAgain": "Tekrar oyna",
+    "moves": "Hamleler",
+    "promotionTitle": "Piyon hangi taşa dönüşsün?",
+    "cancel": "Vazgeç",
+    "youPlay": "Sen: {{color}}",
+    "color": { "w": "Beyaz", "b": "Siyah" },
+    "result": { "win": "Kazandın!", "loss": "Kaybettin", "draw": "Berabere" },
+    "reason": {
+      "checkmate": "Şah mat",
+      "resigned": "Terk",
+      "stalemate": "Pat",
+      "insufficient-material": "Yetersiz materyal",
+      "threefold-repetition": "Üç kez tekrar",
+      "fifty-move": "50 hamle kuralı",
+      "agreement": "Anlaşma"
+    },
+    "engineError": "Motor yüklenemedi. Sayfayı yenilemeyi dene."
+  },
+  "pieces": { "p": "piyon", "n": "at", "b": "fil", "r": "kale", "q": "vezir", "k": "şah" },
+  "notation": { "K": "Ş", "Q": "V", "R": "K", "B": "F", "N": "A" },
+  "a11y": { "loading": "Yükleniyor", "speechBubble": "{{name}} diyor ki" }
+}

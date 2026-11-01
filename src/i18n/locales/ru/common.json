@@ -1,0 +1,50 @@
+{
+  "app": {
+    "title": "Nexus Шахматы",
+    "tagline": "Играй с ботами, проходи уровни, учись на своих ошибках."
+  },
+  "language": {
+    "label": "Язык",
+    "beta": "бета",
+    "betaNotice": "Этот перевод выполнен автоматически и ожидает проверки."
+  },
+  "map": {
+    "title": "Мир 1",
+    "locked": "Закрыто",
+    "boss": "Босс",
+    "puzzles": "Остановка с задачами",
+    "puzzlesSoon": "Скоро здесь появятся задачи.",
+    "play": "Играть",
+    "stars_one": "{{count}} звезда",
+    "stars_few": "{{count}} звезды",
+    "stars_many": "{{count}} звёзд",
+    "stars_other": "{{count}} звезды"
+  },
+  "game": {
+    "backToMap": "Назад к карте",
+    "yourTurn": "Твой ход",
+    "botThinking": "{{name}} думает…",
+    "check": "Шах!",
+    "resign": "Сдаться",
+    "playAgain": "Сыграть ещё",
+    "moves": "Ходы",
+    "promotionTitle": "Превратить пешку в…",
+    "cancel": "Отмена",
+    "youPlay": "Ты: {{color}}",
+    "color": { "w": "Белые", "b": "Чёрные" },
+    "result": { "win": "Ты победил!", "loss": "Ты проиграл", "draw": "Ничья" },
+    "reason": {
+      "checkmate": "Мат",
+      "resigned": "Сдача",
+      "stalemate": "Пат",
+      "insufficient-material": "Недостаточно материала",
+      "threefold-repetition": "Троекратное повторение",
+      "fifty-move": "Правило 50 ходов",
+      "agreement": "По соглашению"
+    },
+    "engineError": "Не удалось загрузить движок. Попробуй обновить страницу."
+  },
+  "pieces": { "p": "пешка", "n": "конь", "b": "слон", "r": "ладья", "q": "ферзь", "k": "король" },
+  "notation": { "K": "Кр", "Q": "Ф", "R": "Л", "B": "С", "N": "К" },
+  "a11y": { "loading": "Загрузка", "speechBubble": "{{name}} говорит" }
+}

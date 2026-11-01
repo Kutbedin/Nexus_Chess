@@ -1,0 +1,366 @@
+/*
+ * Layout rules for i18n:
+ * - Use logical properties (margin-inline, padding-block, inset-inline-start) so RTL works by flipping <html dir>.
+ * - Never fix widths of text containers; let German/Russian strings wrap.
+ * - The board area stays LTR: chess coordinates do not mirror in RTL languages.
+ */
+:root {
+  --locale-font: inherit;
+  --font-base: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Ubuntu, sans-serif;
+  --bg: #f6f3ee;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #5d636b;
+  --accent: #2f7d4f;
+  --accent-strong: #1f5c38;
+  --boss: #b4532a;
+  --border: #e3ddd3;
+  --highlight-last-move: rgba(255, 213, 79, 0.45);
+  --highlight-selected: rgba(47, 125, 79, 0.45);
+  --highlight-target: rgba(31, 92, 56, 0.55);
+  --highlight-check: rgba(220, 38, 38, 0.85);
+  --radius: 14px;
+
+  font-family: var(--locale-font, var(--font-base)), var(--font-base);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(zh-Hans) {
+  /* CJK text reads better with slightly looser line height and no letter-spacing tweaks. */
+  line-height: 1.7;
+  word-break: normal;
+  line-break: strict;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-block-size: 100vh;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.app {
+  max-inline-size: 960px;
+  margin-inline: auto;
+  padding: 16px;
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-block-end: 16px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.tagline {
+  margin: 4px 0 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.language-switcher {
+  max-inline-size: 280px;
+}
+
+.language-switcher select {
+  font: inherit;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  min-block-size: 44px;
+}
+
+.beta-notice {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Level map */
+.level-map h2 {
+  text-align: center;
+}
+
+.level-path {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+}
+
+.level-node {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transform: translateX(calc(var(--offset) * 60px));
+  max-inline-size: 100%;
+}
+
+.level-button {
+  inline-size: 84px;
+  block-size: 84px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  box-shadow: 0 6px 0 var(--accent-strong);
+  font-size: 2.2rem;
+  flex-shrink: 0;
+  transition: transform 0.1s;
+}
+
+.level-button:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--accent-strong);
+}
+
+.level-button:disabled {
+  background: #c9c4bb;
+  box-shadow: 0 6px 0 #a8a299;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.kind-boss .level-button {
+  inline-size: 104px;
+  block-size: 104px;
+  background: var(--boss);
+  box-shadow: 0 6px 0 #7f3a1d;
+}
+
+.level-label {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  max-inline-size: 260px;
+  overflow-wrap: anywhere;
+}
+
+.level-status {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.badge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--boss);
+  color: white;
+}
+
+/* Game */
+.game-screen {
+  display: grid;
+  gap: 12px;
+}
+
+.game-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.bot-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.bot-avatar {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.bot-meta {
+  min-inline-size: 0;
+  flex: 1;
+}
+
+.speech-bubble {
+  position: relative;
+  margin: 6px 0 0;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  border-start-start-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+.is-boss .speech-bubble {
+  border-color: var(--boss);
+}
+
+.board-wrap {
+  inline-size: min(100%, 560px);
+  margin-inline: auto;
+  direction: ltr;
+  touch-action: none;
+}
+
+.status-line {
+  min-block-size: 1.5em;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.game-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.primary-button,
+.secondary-button {
+  min-block-size: 48px;
+  padding-inline: 20px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+}
+
+.primary-button {
+  background: var(--accent);
+  color: white;
+}
+
+.secondary-button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.secondary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: var(--accent-strong);
+  text-decoration: underline;
+  padding: 8px 0;
+}
+
+.coach-panel,
+.move-list {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+}
+
+.coach-panel h2,
+.move-list h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.coach-panel ul {
+  margin: 0;
+  padding-inline-start: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.move-list ol {
+  margin: 0;
+  padding-inline-start: 28px;
+  columns: 3 140px;
+  font-variant-numeric: tabular-nums;
+}
+
+.move-list li span {
+  display: inline-block;
+  min-inline-size: 4.5em;
+}
+
+/* Promotion modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 10;
+}
+
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  max-inline-size: min(92vw, 420px);
+}
+
+.modal h2 {
+  margin-block-start: 0;
+  font-size: 1.15rem;
+}
+
+.promotion-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-block-end: 8px;
+}
+
+.promotion-option {
+  inline-size: 64px;
+  block-size: 64px;
+  font-size: 2.6rem;
+  line-height: 1;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #f2efe9;
+}
+
+.spinner {
+  inline-size: 40px;
+  block-size: 40px;
+  margin: 40vh auto 0;
+  border: 4px solid var(--border);
+  border-block-start-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

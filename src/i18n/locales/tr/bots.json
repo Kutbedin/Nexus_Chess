@@ -1,0 +1,44 @@
+{
+  "minik": {
+    "name": "Minik Mert",
+    "tagline": "Satranca yeni başladı, taş almayı çok seviyor.",
+    "lines": {
+      "greeting": ["Merhaba! Beraber oynayalım mı?", "Bugün kazanacağımı hissediyorum!"],
+      "botCaptures": ["Hop! Bu taş artık benim.", "Yaşasın, bir taş daha!"],
+      "playerCaptures": ["Eyvah, onu görmemiştim!", "Hey, o benim taşımdı!"],
+      "botGivesCheck": ["Şah! Bunu bekliyor muydun?"],
+      "playerGivesCheck": ["Ay, şahım tehlikede!"],
+      "botWins": ["Kazandım! Bir daha oynayalım mı?"],
+      "botLoses": ["Tebrikler, çok iyi oynadın!"],
+      "draw": ["Berabere! İkimiz de iyiydik."]
+    }
+  },
+  "atli": {
+    "name": "Atlı Ayşe",
+    "tagline": "Atlarıyla beklenmedik saldırılar yapmayı sever.",
+    "lines": {
+      "greeting": ["Atlarım hazır, ya seninkiler?", "Hazırsan başlayalım!"],
+      "botCaptures": ["Atım bunu çoktan görmüştü."],
+      "playerCaptures": ["Hmm, akıllıca."],
+      "botGivesCheck": ["Şah! Atlar her yerden çıkar."],
+      "playerGivesCheck": ["Fena değil, ama daha bitmedi."],
+      "botWins": ["Atlarım yine kazandı!"],
+      "botLoses": ["Bu sefer sen kazandın. Rövanş isterim!"],
+      "draw": ["Berabere. Güzel mücadeleydi."]
+    }
+  },
+  "sultan": {
+    "name": "Sultan Kale",
+    "tagline": "Dünya 1'in bossu. Kalesini kolay kolay teslim etmez.",
+    "lines": {
+      "greeting": ["Kaleme kadar gelebildin demek… Bakalım ne yapacaksın."],
+      "botCaptures": ["Kalemin duvarları sağlam."],
+      "playerCaptures": ["Bir taş mı aldın? Kale hâlâ ayakta."],
+      "botGivesCheck": ["Şah! Sultanın huzurundasın."],
+      "playerGivesCheck": ["Cüretkârsın…"],
+      "botWins": ["Kale düşmedi. Güçlenip geri gel!"],
+      "botLoses": ["Kale düştü… Sen gerçek bir şampiyonsun!"],
+      "draw": ["Berabere. Kale de sen de ayaktasınız."]
+    }
+  }
+}
