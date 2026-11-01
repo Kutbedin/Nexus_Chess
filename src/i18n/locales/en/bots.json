@@ -1,0 +1,44 @@
+{
+  "minik": {
+    "name": "Little Max",
+    "tagline": "Just started chess and loves capturing pieces.",
+    "lines": {
+      "greeting": ["Hi! Want to play together?", "I have a feeling I'll win today!"],
+      "botCaptures": ["Yoink! That piece is mine now.", "Yay, another one!"],
+      "playerCaptures": ["Oops, I didn't see that!", "Hey, that was my piece!"],
+      "botGivesCheck": ["Check! Didn't see that coming, did you?"],
+      "playerGivesCheck": ["Uh-oh, my king is in danger!"],
+      "botWins": ["I won! Play again?"],
+      "botLoses": ["Congrats, you played really well!"],
+      "draw": ["A draw! We were both good."]
+    }
+  },
+  "atli": {
+    "name": "Knightly Nora",
+    "tagline": "Loves surprise attacks with her knights.",
+    "lines": {
+      "greeting": ["My knights are ready. Are yours?", "Let's begin when you're ready!"],
+      "botCaptures": ["My knight saw that long ago."],
+      "playerCaptures": ["Hmm, clever."],
+      "botGivesCheck": ["Check! Knights come from everywhere."],
+      "playerGivesCheck": ["Not bad, but it's not over yet."],
+      "botWins": ["My knights win again!"],
+      "botLoses": ["You win this time. I want a rematch!"],
+      "draw": ["A draw. Nice fight."]
+    }
+  },
+  "sultan": {
+    "name": "Sultan Castle",
+    "tagline": "The boss of World 1. Never gives up the castle easily.",
+    "lines": {
+      "greeting": ["So you made it to my castle… Let's see what you've got."],
+      "botCaptures": ["My castle walls are strong."],
+      "playerCaptures": ["You took a piece? The castle still stands."],
+      "botGivesCheck": ["Check! You stand before the Sultan."],
+      "playerGivesCheck": ["Bold of you…"],
+      "botWins": ["The castle did not fall. Come back stronger!"],
+      "botLoses": ["The castle has fallen… You are a true champion!"],
+      "draw": ["A draw. Both you and the castle still stand."]
+    }
+  }
+}

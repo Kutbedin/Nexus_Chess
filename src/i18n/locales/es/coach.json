@@ -1,0 +1,10 @@
+{
+  "title": "Notas del entrenador",
+  "hangingPiece": "Tras {{moveNumber}}. {{san}}, la pieza en {{square}} ({{piece}}) quedó sin defensa. Antes de cada jugada, comprueba que tus piezas estén protegidas.",
+  "materialLoss_one": "Tras {{moveNumber}}. {{san}}, perdiste {{count}} punto de material.",
+  "materialLoss_many": "Tras {{moveNumber}}. {{san}}, perdiste {{count}} puntos de material.",
+  "materialLoss_other": "Tras {{moveNumber}}. {{san}}, perdiste {{count}} puntos de material.",
+  "forkSuffered": "En la jugada {{moveNumber}}, tu rival hizo una horquilla con {{san}}: la pieza en {{square}} ({{piece}}) atacó {{targets}} a la vez.",
+  "mateThreatAllowed": "Tras {{moveNumber}}. {{san}}, tu rival podía dar mate en una con {{mateSan}}. Antes de cada jugada, mira todos los jaques de tu rival.",
+  "clean": "No encontré errores tácticos claros. ¡Gran partida!"
+}

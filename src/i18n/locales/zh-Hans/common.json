@@ -1,0 +1,47 @@
+{
+  "app": {
+    "title": "Nexus 国际象棋",
+    "tagline": "与机器人对弈，逐关升级，从错误中学习。"
+  },
+  "language": {
+    "label": "语言",
+    "beta": "测试版",
+    "betaNotice": "此翻译由机器生成，等待人工审校。"
+  },
+  "map": {
+    "title": "世界 1",
+    "locked": "未解锁",
+    "boss": "首领",
+    "puzzles": "谜题站",
+    "puzzlesSoon": "谜题即将上线。",
+    "play": "开始",
+    "stars_other": "{{count}} 颗星"
+  },
+  "game": {
+    "backToMap": "返回地图",
+    "yourTurn": "轮到你了",
+    "botThinking": "{{name}} 正在思考…",
+    "check": "将军！",
+    "resign": "认输",
+    "playAgain": "再来一局",
+    "moves": "着法",
+    "promotionTitle": "兵升变为…",
+    "cancel": "取消",
+    "youPlay": "你执{{color}}",
+    "color": { "w": "白棋", "b": "黑棋" },
+    "result": { "win": "你赢了！", "loss": "你输了", "draw": "和棋" },
+    "reason": {
+      "checkmate": "将死",
+      "resigned": "认输",
+      "stalemate": "逼和",
+      "insufficient-material": "子力不足",
+      "threefold-repetition": "三次重复局面",
+      "fifty-move": "五十回合规则",
+      "agreement": "协议和棋"
+    },
+    "engineError": "引擎加载失败，请刷新页面重试。"
+  },
+  "pieces": { "p": "兵", "n": "马", "b": "象", "r": "车", "q": "后", "k": "王" },
+  "notation": { "K": "王", "Q": "后", "R": "车", "B": "象", "N": "马" },
+  "a11y": { "loading": "加载中", "speechBubble": "{{name}} 说" }
+}

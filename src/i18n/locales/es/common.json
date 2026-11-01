@@ -1,0 +1,49 @@
+{
+  "app": {
+    "title": "Nexus Ajedrez",
+    "tagline": "Juega contra bots, sube de nivel, aprende de tus errores."
+  },
+  "language": {
+    "label": "Idioma",
+    "beta": "beta",
+    "betaNotice": "Esta traducción se generó automáticamente y está pendiente de revisión."
+  },
+  "map": {
+    "title": "Mundo 1",
+    "locked": "Bloqueado",
+    "boss": "Jefe",
+    "puzzles": "Parada de problemas",
+    "puzzlesSoon": "Pronto habrá problemas aquí.",
+    "play": "Jugar",
+    "stars_one": "{{count}} estrella",
+    "stars_many": "{{count}} estrellas",
+    "stars_other": "{{count}} estrellas"
+  },
+  "game": {
+    "backToMap": "Volver al mapa",
+    "yourTurn": "Te toca",
+    "botThinking": "{{name}} está pensando…",
+    "check": "¡Jaque!",
+    "resign": "Abandonar",
+    "playAgain": "Jugar de nuevo",
+    "moves": "Jugadas",
+    "promotionTitle": "Coronar el peón como…",
+    "cancel": "Cancelar",
+    "youPlay": "Tú: {{color}}",
+    "color": { "w": "Blancas", "b": "Negras" },
+    "result": { "win": "¡Ganaste!", "loss": "Perdiste", "draw": "Tablas" },
+    "reason": {
+      "checkmate": "Jaque mate",
+      "resigned": "Abandono",
+      "stalemate": "Ahogado",
+      "insufficient-material": "Material insuficiente",
+      "threefold-repetition": "Triple repetición",
+      "fifty-move": "Regla de los 50 movimientos",
+      "agreement": "Acuerdo"
+    },
+    "engineError": "No se pudo cargar el motor. Intenta recargar la página."
+  },
+  "pieces": { "p": "peón", "n": "caballo", "b": "alfil", "r": "torre", "q": "dama", "k": "rey" },
+  "notation": { "K": "R", "Q": "D", "R": "T", "B": "A", "N": "C" },
+  "a11y": { "loading": "Cargando", "speechBubble": "{{name}} dice" }
+}

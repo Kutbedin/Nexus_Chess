@@ -1,0 +1,15 @@
+---
+description: Third-party licensing rules
+alwaysApply: true
+---
+
+# Licensing rules
+
+- Do NOT add chessground, lila code, or any GPL/AGPL/LGPL library to the app bundle.
+- Board UI: `react-chessboard` (MIT). `cm-chessboard` (MIT) is the approved alternative.
+- Rules: `chess.js` (BSD-2-Clause).
+- Stockfish (GPL-3.0) is allowed only as a separate program: loaded from `public/engine/` into a Web Worker
+  and spoken to via UCI text messages. Never `import` it into app code. Keep `docs/stockfish-source.md`
+  (source offer) and `Copying.txt` shipped next to the engine; update both when the engine version changes.
+- Puzzles: Lichess puzzle database (CC0). Do not import Lichess games/analysis under other licenses.
+- Check the license of every new dependency (`npm view <pkg> license`) before adding it; prefer MIT/BSD/Apache/ISC.

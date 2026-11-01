@@ -1,0 +1,10 @@
+{
+  "title": "Notes du coach",
+  "hangingPiece": "Après {{moveNumber}}. {{san}}, la pièce en {{square}} ({{piece}}) est restée sans défense. Avant chaque coup, vérifie que tes pièces sont protégées.",
+  "materialLoss_one": "Après {{moveNumber}}. {{san}}, tu as perdu {{count}} point de matériel.",
+  "materialLoss_many": "Après {{moveNumber}}. {{san}}, tu as perdu {{count}} points de matériel.",
+  "materialLoss_other": "Après {{moveNumber}}. {{san}}, tu as perdu {{count}} points de matériel.",
+  "forkSuffered": "Au coup {{moveNumber}}, ton adversaire a joué une fourchette avec {{san}} : la pièce en {{square}} ({{piece}}) attaquait {{targets}} en même temps.",
+  "mateThreatAllowed": "Après {{moveNumber}}. {{san}}, ton adversaire pouvait mater en un coup avec {{mateSan}}. Avant chaque coup, regarde tous les échecs possibles de ton adversaire.",
+  "clean": "Je n'ai trouvé aucune erreur tactique évidente. Belle partie !"
+}

@@ -1,0 +1,49 @@
+{
+  "app": {
+    "title": "Nexus Échecs",
+    "tagline": "Affronte des bots, monte de niveau, apprends de tes erreurs."
+  },
+  "language": {
+    "label": "Langue",
+    "beta": "bêta",
+    "betaNotice": "Cette traduction a été générée automatiquement et attend une relecture."
+  },
+  "map": {
+    "title": "Monde 1",
+    "locked": "Verrouillé",
+    "boss": "Boss",
+    "puzzles": "Étape problèmes",
+    "puzzlesSoon": "Les problèmes arrivent bientôt ici.",
+    "play": "Jouer",
+    "stars_one": "{{count}} étoile",
+    "stars_many": "{{count}} étoiles",
+    "stars_other": "{{count}} étoiles"
+  },
+  "game": {
+    "backToMap": "Retour à la carte",
+    "yourTurn": "À toi de jouer",
+    "botThinking": "{{name}} réfléchit…",
+    "check": "Échec !",
+    "resign": "Abandonner",
+    "playAgain": "Rejouer",
+    "moves": "Coups",
+    "promotionTitle": "Promouvoir le pion en…",
+    "cancel": "Annuler",
+    "youPlay": "Toi : {{color}}",
+    "color": { "w": "Blancs", "b": "Noirs" },
+    "result": { "win": "Tu as gagné !", "loss": "Tu as perdu", "draw": "Nulle" },
+    "reason": {
+      "checkmate": "Échec et mat",
+      "resigned": "Abandon",
+      "stalemate": "Pat",
+      "insufficient-material": "Matériel insuffisant",
+      "threefold-repetition": "Triple répétition",
+      "fifty-move": "Règle des 50 coups",
+      "agreement": "Accord mutuel"
+    },
+    "engineError": "Le moteur n'a pas pu être chargé. Essaie de recharger la page."
+  },
+  "pieces": { "p": "pion", "n": "cavalier", "b": "fou", "r": "tour", "q": "dame", "k": "roi" },
+  "notation": { "K": "R", "Q": "D", "R": "T", "B": "F", "N": "C" },
+  "a11y": { "loading": "Chargement", "speechBubble": "{{name}} dit" }
+}

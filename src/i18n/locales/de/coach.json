@@ -1,0 +1,9 @@
+{
+  "title": "Notizen des Trainers",
+  "hangingPiece": "Nach {{moveNumber}}. {{san}} stand die Figur auf {{square}} ({{piece}}) ungedeckt. Prüfe vor jedem Zug, ob deine Figuren geschützt sind.",
+  "materialLoss_one": "Nach {{moveNumber}}. {{san}} hast du {{count}} Materialpunkt verloren.",
+  "materialLoss_other": "Nach {{moveNumber}}. {{san}} hast du {{count}} Materialpunkte verloren.",
+  "forkSuffered": "Im {{moveNumber}}. Zug hat dein Gegner mit {{san}} eine Gabel gespielt: Die Figur auf {{square}} ({{piece}}) griff {{targets}} gleichzeitig an.",
+  "mateThreatAllowed": "Nach {{moveNumber}}. {{san}} hätte dein Gegner mit {{mateSan}} sofort mattsetzen können. Schau vor jedem Zug auf alle Schachgebote deines Gegners.",
+  "clean": "Ich habe keine klaren taktischen Fehler gefunden. Tolle Partie!"
+}

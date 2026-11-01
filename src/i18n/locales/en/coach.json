@@ -1,0 +1,9 @@
+{
+  "title": "Coach's notes",
+  "hangingPiece": "After {{moveNumber}}. {{san}}, your {{piece}} on {{square}} was left undefended. Before each move, check that your pieces are protected.",
+  "materialLoss_one": "After {{moveNumber}}. {{san}}, you lost {{count}} point of material.",
+  "materialLoss_other": "After {{moveNumber}}. {{san}}, you lost {{count}} points of material.",
+  "forkSuffered": "On move {{moveNumber}}, your opponent forked you with {{san}}: the {{piece}} on {{square}} attacked {{targets}} at once.",
+  "mateThreatAllowed": "After {{moveNumber}}. {{san}}, your opponent could mate in one with {{mateSan}}. Before each move, look at every check your opponent has.",
+  "clean": "I didn't find any clear tactical mistakes. Great game!"
+}

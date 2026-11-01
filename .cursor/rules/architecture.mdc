@@ -1,0 +1,21 @@
+---
+description: Nexus Chess architecture boundaries
+alwaysApply: true
+---
+
+# Architecture rules
+
+- `src/core/**` is framework-free TypeScript. It must not import React, react-dom, react-chessboard,
+  `window`, `document`, `localStorage`, `Worker`, or anything in `src/ui`, `src/platform`, or `src/i18n`.
+  Game state, bots, progression, coach, revenge puzzles, and puzzles live here.
+- `src/platform/**` holds adapters for browser/OS capabilities (Stockfish worker, storage, analytics).
+  Core code talks to them only through ports (`EnginePort`, `ProgressRepository`, `AnalyticsPort`).
+- `src/ui/**` renders state and forwards gestures. No chess rules, scoring, or progression logic in components;
+  call `BotGameController` / core functions instead.
+- Plain SPA only (Vite). No SSR, no server components, no Next.js-style data loaders, no reliance on
+  `window` at module top level in core. The same bundle must run inside Capacitor later.
+- Randomness is injected (`Rng`), never `Math.random()` inside core, so tests are deterministic.
+- The backend is reached only through repository/API interfaces. Phase 1a ships local adapters;
+  Supabase adapters implement the same interfaces.
+- Children's privacy: never store names, emails, birthdates, or free text about students.
+  Classroom features use anonymous codes (e.g. `KALE-4521`). Analytics events carry no PII, FEN, or PGN.

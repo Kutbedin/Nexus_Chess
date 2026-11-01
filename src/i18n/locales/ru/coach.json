@@ -1,0 +1,11 @@
+{
+  "title": "Заметки тренера",
+  "hangingPiece": "После {{moveNumber}}. {{san}} фигура на {{square}} ({{piece}}) осталась без защиты. Перед каждым ходом проверяй, защищены ли твои фигуры.",
+  "materialLoss_one": "После {{moveNumber}}. {{san}} ты потерял {{count}} очко материала.",
+  "materialLoss_few": "После {{moveNumber}}. {{san}} ты потерял {{count}} очка материала.",
+  "materialLoss_many": "После {{moveNumber}}. {{san}} ты потерял {{count}} очков материала.",
+  "materialLoss_other": "После {{moveNumber}}. {{san}} ты потерял {{count}} очка материала.",
+  "forkSuffered": "На {{moveNumber}}-м ходу соперник сделал вилку ходом {{san}}: фигура на {{square}} ({{piece}}) атаковала {{targets}} одновременно.",
+  "mateThreatAllowed": "После {{moveNumber}}. {{san}} соперник мог поставить мат в один ход: {{mateSan}}. Перед каждым ходом смотри на все шахи соперника.",
+  "clean": "Явных тактических ошибок не нашёл. Отличная партия!"
+}
