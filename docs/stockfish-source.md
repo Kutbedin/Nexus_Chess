@@ -22,9 +22,9 @@ We ship the files unmodified, copied from the npm package by `scripts/copy-engin
 
 ## Corresponding source
 
-- Public mirror of the exact source we ship (placeholder until created):
-  https://github.com/Kutbedin/stockfish-wasm-fork — fork of `nmrugg/stockfish.js` at the commit above,
-  including build instructions and the neural-network file reference.
+- Public fork with the exact source we ship: https://github.com/Kutbedin/stockfish-wasm-fork/tree/0d5dd7944f88c817c07a26bc4fb1905d5f9c46d6
+  (`Kutbedin/stockfish-wasm-fork`, a fork of `nmrugg/stockfish.js`; the commit above is in its history.
+  The fork has no `v19.0.1` tag, so we link the commit directly.)
 - Written offer: for at least three years from the date we distribute this engine binary, we
   will provide the complete corresponding source code of the exact engine build we ship to anyone
   who asks. Contact: contact@nexuschess.com (placeholder until the domain is live).

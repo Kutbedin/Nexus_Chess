@@ -245,7 +245,7 @@ Motor ve depolama her zaman UCI/İngilizce SAN kullanır; yerelleştirme yalnız
 - chess.js: BSD-2-Clause · react-chessboard: MIT · i18next ailesi: MIT · posthog-js: MIT/Apache-2.0.
 - **chessground (GPL) ve Lichess kodu kullanılmaz.** Kurallar `.cursor/rules/licensing.mdc` içinde.
 - **Stockfish (GPL-3.0)** ayrı bir program olarak çalışır: `public/engine/` altında, Web Worker'da, yalnızca UCI ile. Yanında `Copying.txt` (GPL metni) ve `SOURCE.md` (kaynak bağlantıları + **yazılı kaynak teklifi**) dağıtılır. Yükümlülük: dağıttığımız motor ikilisinin tam kaynağını en az 3 yıl talep edene sağlamak; motor sürümü değişince bu dosyalar güncellenir. Mağaza (Capacitor) dağıtımında da aynı dosyalar uygulama içinde erişilebilir olmalı. Hukuki onay önerilir.
-- **Hakkında sayfası (uygulandı, 7 dilde):** uygulama lisansı (tüm hakları saklıdır), Stockfish'in ayrı program olarak kullanıldığı ve GPLv3 ile lisanslandığı bildirimi, tam sürüm + derleme (paket/commit), kaynak bağlantısı (yer tutucu: `https://github.com/Kutbedin/stockfish-wasm-fork` — dağıttığımız commit'in herkese açık çatalı), üst proje bağlantısı, GPLv3 tam metni (`/engine/Copying.txt`), yazılı kaynak teklifi ve iletişim (`contact@nexuschess.com`, yer tutucu), üçüncü taraf bileşen listesi, gizlilik özeti. Yer tutucular `src/config.ts` içinde.
+- **Hakkında sayfası (uygulandı, 7 dilde):** uygulama lisansı (tüm hakları saklıdır), Stockfish'in ayrı program olarak kullanıldığı ve GPLv3 ile lisanslandığı bildirimi, tam sürüm + derleme (paket/commit), kaynak bağlantısı (`Kutbedin/stockfish-wasm-fork` çatalında dağıttığımız commit: https://github.com/Kutbedin/stockfish-wasm-fork/tree/0d5dd7944f88c817c07a26bc4fb1905d5f9c46d6; çatalda `v19.0.1` etiketi olmadığı için doğrudan commit'e bağlanır), üst proje bağlantısı, GPLv3 tam metni (`/engine/Copying.txt`), yazılı kaynak teklifi ve iletişim (`contact@nexuschess.com`, yer tutucu), üçüncü taraf bileşen listesi, gizlilik özeti. Yer tutucular `src/config.ts` içinde.
 - Lichess bulmaca veritabanı: CC0 (Hakkında sayfasında ve bulmaca ekranında kaynak gösterilir).
 
 ## 10. Test stratejisi ve CI
@@ -279,12 +279,12 @@ Motor ve depolama her zaman UCI/İngilizce SAN kullanır; yerelleştirme yalnız
 - 7 dil, tembel yükleme, tarayıcı dili algılama, kalıcı seçim, yerelleştirilmiş notasyon, beta etiketi.
 - PostHog kancası (anahtar yoksa kapalı). Faz 1b tipleri ve SQL şeması.
 
-**Henüz yok (sonraki adımlar):** Supabase anonim oturum + `SupabaseStorageAdapter`, KVKK aydınlatma metni, oyuncu bulmaca puanı (Glicko) ve kişisel öneri, Dünya 2, ses/animasyon, PWA manifestosu + Capacitor paketleme, `stockfish-wasm-fork` deposunun gerçekten açılması.
+**Henüz yok (sonraki adımlar):** Supabase anonim oturum + `SupabaseStorageAdapter`, KVKK aydınlatma metni, oyuncu bulmaca puanı (Glicko) ve kişisel öneri, Dünya 2, ses/animasyon, PWA manifestosu + Capacitor paketleme.
 
 ## 12. Açık kararlar (kullanıcıdan)
 
 1. **Arka uç:** ~~Supabase mı Hono mu?~~ → Supabase anonim oturum sonraki fazda (karar verildi). Açık: hesap bağlama (e-posta/Apple/Google) ne zaman?
-2. ~~Uygulama lisansı~~ → **özel mülk, tüm hakları saklıdır** (karar verildi). Açık: `contact@nexuschess.com` ve `Kutbedin/stockfish-wasm-fork` gerçek değerleri yayından önce onaylanmalı.
+2. ~~Uygulama lisansı~~ → **özel mülk, tüm hakları saklıdır** (karar verildi). `Kutbedin/stockfish-wasm-fork` açıldı ve bağlandı. Açık: `contact@nexuschess.com` yayından önce onaylanmalı.
 3. ~~Bot adları~~ → her dilde Türkçe (karar verildi). Açık: 4. bot "Fil Filiz" adı ve "Çapraz Ustası" unvanı uygun mu?
 4. **Zorluk kalibrasyonu:** Gösterilen Elo'lar tahmini; ilk oyuncu verisiyle mi ayarlansın?
 5. **Analitik:** ~~PostHog EU~~ (karar verildi, çerezsiz). Açık: KVKK aydınlatma metni; okul modu bayrağının sınıf koduyla otomatik açılması (Faz 1b).
