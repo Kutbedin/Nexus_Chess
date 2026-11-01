@@ -38,7 +38,8 @@ describe('bundled puzzle packs (Lichess CC0)', () => {
       for (const m of p.moves) expect(() => chess.move(m), `${p.id} ${m}`).not.toThrow()
       if (p.themes.some((t) => t.startsWith('mateIn') || t === 'backRankMate')) expect(chess.isCheckmate(), p.id).toBe(true)
     }
-  })
+    // Replays ~2,000 lines with chess.js; slow CI runners exceed the 5s default.
+  }, 30_000)
 
   it('covers the core beginner themes', () => {
     const themes = new Set(packs.flat().map((p) => p.primary))
