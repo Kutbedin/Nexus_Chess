@@ -27,25 +27,3 @@ export function parseLichessCsvRow(row: string): Puzzle {
   chess.move(uci[0])
   return { id, fen: chess.fen(), solution: uci.slice(1), rating: Number(rating), themes: themes.split(' ').filter(Boolean) }
 }
-
-export type PuzzleAttempt =
-  | { status: 'correct'; reply?: string; done: boolean }
-  | { status: 'wrong' }
-
-/** Checks the player's move at `step` (player moves are even indices). Any mate-in-one also counts. */
-export function checkPuzzleMove(puzzle: Puzzle, fenNow: string, step: number, uci: string): PuzzleAttempt {
-  const expected = puzzle.solution[step]
-  let ok = uci === expected
-  if (!ok && step === puzzle.solution.length - 1) {
-    const c = new Chess(fenNow)
-    try {
-      c.move(uci)
-      ok = c.isCheckmate()
-    } catch {
-      ok = false
-    }
-  }
-  if (!ok) return { status: 'wrong' }
-  const reply = puzzle.solution[step + 1]
-  return { status: 'correct', reply, done: step + 2 >= puzzle.solution.length }
-}

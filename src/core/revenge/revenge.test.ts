@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { line } from '../../test/fakeEngine'
-import { singleClearWinningMove } from './revenge'
+import { addRevengePuzzles, dueRevenge, recordRevengeAttempt, singleClearWinningMove, type RevengePuzzle } from './revenge'
 import { INTERVAL_DAYS, isDue, isMastered, newReviewState, review } from './srs'
 
 describe('revenge puzzle selection', () => {
@@ -48,5 +48,34 @@ describe('spaced repetition', () => {
     let s = newReviewState(0)
     for (let i = 0; i < 10; i++) s = review(s, true, 0)
     expect(isMastered(s)).toBe(true)
+  })
+})
+
+describe('revenge queue', () => {
+  const puzzle = (id: string, fen: string): RevengePuzzle => ({
+    id,
+    fen,
+    solutionUci: 'h5f7',
+    kind: 'missedMate',
+    mateIn: 1,
+    botId: 'minik',
+    moveNumber: 4,
+    playedSan: 'Nc3',
+    createdAt: 0,
+  })
+
+  it('adds new puzzles once, deduplicating by id and position', () => {
+    let q = addRevengePuzzles([], [puzzle('a', 'fen1'), puzzle('b', 'fen2')])
+    q = addRevengePuzzles(q, [puzzle('a', 'fen1'), puzzle('c', 'fen2'), puzzle('d', 'fen3')])
+    expect(q.map((e) => e.puzzle.id)).toEqual(['a', 'b', 'd'])
+  })
+
+  it('serves due puzzles, then schedules them by outcome', () => {
+    let q = addRevengePuzzles([], [puzzle('a', 'fen1'), puzzle('b', 'fen2')])
+    expect(dueRevenge(q, 0)).toHaveLength(2)
+    q = recordRevengeAttempt(q, 'a', true, 0)
+    q = recordRevengeAttempt(q, 'b', false, 0)
+    expect(dueRevenge(q, 0)).toHaveLength(0)
+    expect(dueRevenge(q, 86_400_000).map((e) => e.puzzle.id).sort()).toEqual(['a', 'b'])
   })
 })

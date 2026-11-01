@@ -1,22 +1,48 @@
 import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
-import type { EnginePort } from './core/engine/types'
 import { initI18n } from './i18n/i18n'
 import { createAnalytics } from './platform/analytics'
-import { LocalProgressRepository } from './platform/progressStore'
-import { StockfishEngine } from './platform/stockfishEngine'
+import { LocalStorageAdapter } from './platform/localStorageAdapter'
+import { resolveSchoolMode } from './platform/schoolMode'
+import { StockfishWasmProvider } from './platform/stockfishEngine'
 import { App } from './ui/App'
 import './styles.css'
 
-let engine: EnginePort | null = null
-const getEngine = () => (engine ??= new StockfishEngine())
+const FIRST_OPEN_KEY = 'nexus.firstOpen'
+
+function firstOpenAt(): number {
+  const stored = Number(localStorage.getItem(FIRST_OPEN_KEY))
+  if (stored > 0) return stored
+  const now = Date.now()
+  localStorage.setItem(FIRST_OPEN_KEY, String(now))
+  return now
+}
 
 async function bootstrap() {
-  const [, analytics] = await Promise.all([initI18n(), createAnalytics()])
+  const schoolMode = resolveSchoolMode(location.search, localStorage, import.meta.env.VITE_SCHOOL_MODE as string | undefined)
+  const [, analytics] = await Promise.all([
+    initI18n(),
+    createAnalytics({
+      key: import.meta.env.VITE_POSTHOG_KEY as string | undefined,
+      host: import.meta.env.VITE_POSTHOG_HOST as string | undefined,
+      schoolMode,
+    }),
+  ])
+  void LocalStorageAdapter.requestPersistence()
+  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+    void navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`)
+  }
+
+  const services = {
+    engines: new StockfishWasmProvider(),
+    storage: new LocalStorageAdapter(),
+    analytics,
+    firstOpenAt: firstOpenAt(),
+  }
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <Suspense fallback={<div className="spinner" aria-busy="true" />}>
-        <App services={{ getEngine, progress: new LocalProgressRepository(), analytics }} />
+        <App services={services} />
       </Suspense>
     </StrictMode>,
   )

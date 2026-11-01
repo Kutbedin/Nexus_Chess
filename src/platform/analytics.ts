@@ -1,35 +1,36 @@
 import { noopAnalytics, type AnalyticsEvent, type AnalyticsPort } from '../core/analytics/analytics'
 
+export interface AnalyticsConfig {
+  key: string | undefined
+  host?: string
+  /** School/student mode: analytics fully off; PostHog is never downloaded. */
+  schoolMode: boolean
+}
+
 /**
- * PostHog adapter, loaded lazily and only when VITE_POSTHOG_KEY is set.
- * Privacy defaults: no autocapture, no session recording, memory persistence until consent,
- * IP not stored (configure "Discard client IP data" in the PostHog project as well).
+ * PostHog (EU), cookieless and anonymous by default: no cookies or localStorage ids,
+ * no person profiles, no autocapture, no session recording. Loaded lazily, and only
+ * when a key is configured and school mode is off.
  */
-export async function createAnalytics(): Promise<AnalyticsPort> {
-  const key = import.meta.env.VITE_POSTHOG_KEY as string | undefined
-  if (!key) return noopAnalytics
+export async function createAnalytics(config: AnalyticsConfig): Promise<AnalyticsPort> {
+  if (config.schoolMode || !config.key) return noopAnalytics
   const { default: posthog } = await import('posthog-js')
-  posthog.init(key, {
-    api_host: (import.meta.env.VITE_POSTHOG_HOST as string | undefined) ?? 'https://eu.i.posthog.com',
+  posthog.init(config.key, {
+    api_host: config.host ?? 'https://eu.i.posthog.com',
+    cookieless_mode: 'always',
+    persistence: 'memory',
+    person_profiles: 'never',
     autocapture: false,
     capture_pageview: false,
+    capture_pageleave: false,
     disable_session_recording: true,
-    persistence: 'memory',
+    disable_surveys: true,
     ip: false,
-    opt_out_capturing_by_default: true,
   })
   return {
     track: (event: AnalyticsEvent) => {
       const { name, ...props } = event
       posthog.capture(name, props)
-    },
-    setConsent: (granted) => {
-      if (granted) {
-        posthog.set_config({ persistence: 'localStorage' })
-        posthog.opt_in_capturing()
-      } else {
-        posthog.opt_out_capturing()
-      }
     },
   }
 }

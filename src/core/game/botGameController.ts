@@ -153,7 +153,8 @@ export class BotGameController {
     }
     const wait = minThinkMs - (Date.now() - started)
     if (wait > 0) await new Promise((r) => setTimeout(r, wait))
-    if (this.disposed || this.session.fen !== fen) return
+    // The player may have resigned while the bot was thinking.
+    if (this.disposed || this.session.fen !== fen || this.session.outcome().kind !== 'ongoing') return
     if (!uci) throw new Error('Engine returned no move in a non-terminal position')
     const move = this.session.moveUci(uci)
     this.update({ reaction: reactionForMove(move, this.botColor, this.session.isInCheck()) ?? this.state.reaction })

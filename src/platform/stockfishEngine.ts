@@ -1,5 +1,7 @@
 import { collectLines, parseBestMove, parseInfoLine } from '../core/engine/uci'
+import type { EngineInfo, EnginePurpose, EngineProvider } from '../core/engine/provider'
 import type { AnalyseOptions, CandidateLine, EnginePort } from '../core/engine/types'
+import { STOCKFISH_SOURCE_URL } from '../config'
 
 /**
  * Stockfish (GPL-3.0) runs as a separate program in a Web Worker, loaded from a static URL
@@ -7,6 +9,31 @@ import type { AnalyseOptions, CandidateLine, EnginePort } from '../core/engine/t
  * The files are copied from node_modules/stockfish by scripts/copy-engine.mjs.
  */
 export const STOCKFISH_URL = `${import.meta.env.BASE_URL}engine/stockfish-19-lite-single.js`
+
+/** Exact build we ship. Keep in sync with package.json and docs/stockfish-source.md. */
+export const STOCKFISH_INFO: EngineInfo = {
+  name: 'Stockfish',
+  version: '19 (Stockfish.js 19.0.1, lite single-threaded WASM)',
+  license: 'GPL-3.0',
+  sourceUrl: STOCKFISH_SOURCE_URL,
+  upstreamUrl: 'https://github.com/nmrugg/stockfish.js/tree/v19.0.1',
+  build: 'npm stockfish@19.0.1 · nmrugg/stockfish.js@0d5dd7944f88c817c07a26bc4fb1905d5f9c46d6',
+}
+
+/** Web provider: one worker per purpose, so background analysis never delays the bot's move. */
+export class StockfishWasmProvider implements EngineProvider {
+  readonly info = STOCKFISH_INFO
+  private readonly engines = new Map<EnginePurpose, EnginePort>()
+
+  get(purpose: EnginePurpose): EnginePort {
+    let engine = this.engines.get(purpose)
+    if (!engine) {
+      engine = new StockfishEngine()
+      this.engines.set(purpose, engine)
+    }
+    return engine
+  }
+}
 
 export class StockfishEngine implements EnginePort {
   private readonly worker: Worker
