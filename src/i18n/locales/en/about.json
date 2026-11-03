@@ -1,9 +1,9 @@
 {
   "title": "About",
-  "intro": "Nexus Chess is a chess game designed to help you improve by playing bots and learning from your own mistakes.",
+  "intro": "GambitZone is a chess game designed to help you improve by playing bots and learning from your own mistakes.",
   "appLicense": {
     "title": "License",
-    "body": "© {{year}} Nexus Chess. All rights reserved. The application code is proprietary."
+    "body": "© {{year}} GambitZone. All rights reserved. The application code is proprietary."
   },
   "engine": {
     "title": "Chess engine",

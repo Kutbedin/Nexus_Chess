@@ -3,12 +3,13 @@ import { createRoot } from 'react-dom/client'
 import { initI18n } from './i18n/i18n'
 import { createAnalytics } from './platform/analytics'
 import { LocalStorageAdapter } from './platform/localStorageAdapter'
+import { migrateLegacyLocalStorage, STORAGE_KEYS } from './platform/storageMigration'
 import { resolveSchoolMode } from './platform/schoolMode'
 import { StockfishWasmProvider } from './platform/stockfishEngine'
 import { App } from './ui/App'
 import './styles.css'
 
-const FIRST_OPEN_KEY = 'nexus.firstOpen'
+const FIRST_OPEN_KEY = STORAGE_KEYS.firstOpen
 
 function firstOpenAt(): number {
   const stored = Number(localStorage.getItem(FIRST_OPEN_KEY))
@@ -19,6 +20,7 @@ function firstOpenAt(): number {
 }
 
 async function bootstrap() {
+  migrateLegacyLocalStorage(localStorage)
   const schoolMode = resolveSchoolMode(location.search, localStorage, import.meta.env.VITE_SCHOOL_MODE as string | undefined)
   const [, analytics] = await Promise.all([
     initI18n(),

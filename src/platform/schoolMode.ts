@@ -1,4 +1,6 @@
-const KEY = 'nexus.schoolMode'
+import { STORAGE_KEYS } from '../storageKeys'
+
+const KEY = STORAGE_KEYS.schoolMode
 
 /**
  * School/student mode disables analytics completely (nothing is loaded or sent).

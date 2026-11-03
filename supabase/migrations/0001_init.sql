@@ -1,4 +1,4 @@
--- Nexus Chess: initial schema (proposal, not yet applied).
+-- GambitZone: initial schema (proposal, not yet applied).
 -- Phase 1a uses local storage; these tables back the same repository interfaces once accounts exist.
 -- Privacy: no names, emails, or birthdates of students. Auth users are adults (players/teachers).
 

@@ -3,7 +3,9 @@ import { appOpenedEvent, isoWeek, noopAnalytics } from '../core/analytics/analyt
 import { EMPTY_PROGRESS } from '../core/progression/levelMap'
 import { EMPTY_PUZZLE_STATS } from '../core/storage/storageAdapter'
 import { createAnalytics } from './analytics'
+import { LEGACY_STORAGE_KEYS, STORAGE_KEYS } from '../storageKeys'
 import { LocalStorageAdapter } from './localStorageAdapter'
+import { migrateLegacyLocalStorage } from './storageMigration'
 import { resolveSchoolMode } from './schoolMode'
 import { STOCKFISH_INFO } from './stockfishEngine'
 
@@ -69,8 +71,18 @@ describe('LocalStorageAdapter', () => {
     expect(await s.loadProgress()).toEqual(progress)
     expect((await s.loadPuzzleStats()).solved.abc.pack).toBe('01')
 
-    localStorage.setItem('nexus.revenge.v1', '{broken')
+    localStorage.setItem(STORAGE_KEYS.revenge, '{broken')
     expect(await s.loadRevenge()).toEqual([])
+  })
+
+  it('migrates legacy Nexus Chess localStorage keys on first use', async () => {
+    localStorage.clear()
+    const progress = { version: 1 as const, nodes: { 'w1-1': { completed: true, stars: 3 as const, attempts: 1 } } }
+    localStorage.setItem(LEGACY_STORAGE_KEYS.progress, JSON.stringify(progress))
+    migrateLegacyLocalStorage(localStorage)
+    const s = new LocalStorageAdapter(localStorage)
+    expect(await s.loadProgress()).toEqual(progress)
+    expect(localStorage.getItem(STORAGE_KEYS.progress)).toBe(JSON.stringify(progress))
   })
 })
 

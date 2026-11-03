@@ -1,9 +1,9 @@
 {
   "title": "Acerca de",
-  "intro": "Nexus Chess es un juego de ajedrez diseñado para que mejores jugando contra bots y aprendiendo de tus propios errores.",
+  "intro": "GambitZone es un juego de ajedrez diseñado para que mejores jugando contra bots y aprendiendo de tus propios errores.",
   "appLicense": {
     "title": "Licencia",
-    "body": "© {{year}} Nexus Chess. Todos los derechos reservados. El código de la aplicación es propietario."
+    "body": "© {{year}} GambitZone. Todos los derechos reservados. El código de la aplicación es propietario."
   },
   "engine": {
     "title": "Motor de ajedrez",

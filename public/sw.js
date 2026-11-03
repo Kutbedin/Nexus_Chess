@@ -1,6 +1,6 @@
 // Offline support. Puzzle packs and the engine are precached on install; hashed build assets
 // (JS, CSS, lazy locale chunks) are cached on first use; navigations fall back to the cached shell.
-const CACHE = 'nexus-v2'
+const CACHE = 'gambitzone-v1'
 const SCOPE = new URL(self.registration.scope).pathname
 const ENGINE = ['engine/stockfish-19-lite-single.js', 'engine/stockfish-19-lite-single.wasm', 'engine/Copying.txt']
 

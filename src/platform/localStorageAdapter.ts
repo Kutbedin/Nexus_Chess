@@ -1,12 +1,8 @@
 import { EMPTY_PROGRESS, type PlayerProgress } from '../core/progression/levelMap'
 import type { RevengeEntry } from '../core/revenge/revenge'
 import { EMPTY_PUZZLE_STATS, type PuzzleStats, type StorageAdapter } from '../core/storage/storageAdapter'
-
-const KEYS = {
-  progress: 'nexus.progress.v1',
-  revenge: 'nexus.revenge.v1',
-  puzzles: 'nexus.puzzles.v1',
-} as const
+import { STORAGE_KEYS } from '../storageKeys'
+import { migrateLegacyLocalStorage } from './storageMigration'
 
 /**
  * Guest storage in localStorage. Safari may evict it after 7 days without a visit;
@@ -17,6 +13,7 @@ export class LocalStorageAdapter implements StorageAdapter {
 
   constructor(storage: Storage = window.localStorage) {
     this.storage = storage
+    migrateLegacyLocalStorage(storage)
   }
 
   /** Asks the browser not to evict our data under storage pressure (best effort). */
@@ -29,30 +26,30 @@ export class LocalStorageAdapter implements StorageAdapter {
   }
 
   async loadProgress(): Promise<PlayerProgress> {
-    const p = this.read<PlayerProgress>(KEYS.progress)
+    const p = this.read<PlayerProgress>(STORAGE_KEYS.progress)
     return p?.version === 1 ? p : EMPTY_PROGRESS
   }
 
   async saveProgress(progress: PlayerProgress): Promise<void> {
-    this.write(KEYS.progress, progress)
+    this.write(STORAGE_KEYS.progress, progress)
   }
 
   async loadRevenge(): Promise<RevengeEntry[]> {
-    const r = this.read<RevengeEntry[]>(KEYS.revenge)
+    const r = this.read<RevengeEntry[]>(STORAGE_KEYS.revenge)
     return Array.isArray(r) ? r : []
   }
 
   async saveRevenge(entries: readonly RevengeEntry[]): Promise<void> {
-    this.write(KEYS.revenge, entries)
+    this.write(STORAGE_KEYS.revenge, entries)
   }
 
   async loadPuzzleStats(): Promise<PuzzleStats> {
-    const s = this.read<PuzzleStats>(KEYS.puzzles)
+    const s = this.read<PuzzleStats>(STORAGE_KEYS.puzzles)
     return s?.version === 1 ? s : EMPTY_PUZZLE_STATS
   }
 
   async savePuzzleStats(stats: PuzzleStats): Promise<void> {
-    this.write(KEYS.puzzles, stats)
+    this.write(STORAGE_KEYS.puzzles, stats)
   }
 
   private read<T>(key: string): T | null {

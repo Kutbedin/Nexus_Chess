@@ -1,9 +1,9 @@
 # Stockfish — source and license
 
-Nexus Chess runs the Stockfish chess engine as a separate program inside a Web Worker.
+GambitZone runs the Stockfish chess engine as a separate program inside a Web Worker.
 Stockfish is free software licensed under the GNU General Public License v3 (see `Copying.txt`
-next to this file). Nexus Chess communicates with it only through the UCI text protocol.
-The Nexus Chess application code itself is proprietary (all rights reserved); the engine is not.
+next to this file). GambitZone communicates with it only through the UCI text protocol.
+The GambitZone application code itself is proprietary (all rights reserved); the engine is not.
 
 ## Exact build we distribute
 
@@ -27,7 +27,7 @@ We ship the files unmodified, copied from the npm package by `scripts/copy-engin
   The fork has no `v19.0.1` tag, so we link the commit directly.)
 - Written offer: for at least three years from the date we distribute this engine binary, we
   will provide the complete corresponding source code of the exact engine build we ship to anyone
-  who asks. Contact: contact@nexuschess.com (placeholder until the domain is live).
+  who asks. Contact: contact@gambitzone.com.
 
 ## Swapping the engine
 

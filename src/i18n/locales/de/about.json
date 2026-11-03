@@ -1,9 +1,9 @@
 {
   "title": "Über",
-  "intro": "Nexus Chess ist ein Schachspiel, mit dem du dich durch Partien gegen Bots und durch das Lernen aus eigenen Fehlern verbesserst.",
+  "intro": "GambitZone ist ein Schachspiel, mit dem du dich durch Partien gegen Bots und durch das Lernen aus eigenen Fehlern verbesserst.",
   "appLicense": {
     "title": "Lizenz",
-    "body": "© {{year}} Nexus Chess. Alle Rechte vorbehalten. Der Anwendungscode ist proprietär."
+    "body": "© {{year}} GambitZone. Alle Rechte vorbehalten. Der Anwendungscode ist proprietär."
   },
   "engine": {
     "title": "Schach-Engine",

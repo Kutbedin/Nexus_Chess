@@ -1,9 +1,9 @@
 {
   "title": "Hakkında",
-  "intro": "Nexus Chess, botlarla oynayarak ve kendi hatalarından öğrenerek gelişmen için tasarlanmış bir satranç oyunudur.",
+  "intro": "GambitZone, botlarla oynayarak ve kendi hatalarından öğrenerek gelişmen için tasarlanmış bir satranç oyunudur.",
   "appLicense": {
     "title": "Lisans",
-    "body": "© {{year}} Nexus Chess. Tüm hakları saklıdır. Uygulama kodu özel mülktür."
+    "body": "© {{year}} GambitZone. Tüm hakları saklıdır. Uygulama kodu özel mülktür."
   },
   "engine": {
     "title": "Satranç motoru",
