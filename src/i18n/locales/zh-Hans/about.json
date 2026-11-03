@@ -1,9 +1,9 @@
 {
   "title": "关于",
-  "intro": "Nexus Chess 是一款国际象棋游戏，通过与机器人对弈并从自己的错误中学习来帮助你提高。",
+  "intro": "GambitZone 是一款国际象棋游戏，通过与机器人对弈并从自己的错误中学习来帮助你提高。",
   "appLicense": {
     "title": "许可",
-    "body": "© {{year}} Nexus Chess。保留所有权利。应用程序代码为专有软件。"
+    "body": "© {{year}} GambitZone。保留所有权利。应用程序代码为专有软件。"
   },
   "engine": {
     "title": "象棋引擎",

@@ -1,10 +1,10 @@
-# Nexus Chess — Faz 1a Teknik Mimari Planı
+# GambitZone — Faz 1a Teknik Mimari Planı
 
 > Durum: taslak v2 · Kapsam: Faz 1a (tek oyunculu çekirdek) + Faz 1b veri modeli · Dil: Türkçe öncelikli, çok dilli
 
 ## 1. Özet
 
-Nexus Chess, Chess.com ve Lichess ile **tek oyunculu deneyim** üzerinden rekabet eden, Türkçe öncelikli bir web satranç oyunudur. Faz 1a'nın hedefi: kişilikli botlara karşı oynanan, Duolingo tarzı bir seviye haritasıyla ilerlenen, oyun sonunda Türkçe koç yorumu veren ve oyuncunun kendi hatalarından "intikam bulmacaları" üreten bir çekirdek.
+GambitZone, Chess.com ve Lichess ile **tek oyunculu deneyim** üzerinden rekabet eden, Türkçe öncelikli bir web satranç oyunudur. Faz 1a'nın hedefi: kişilikli botlara karşı oynanan, Duolingo tarzı bir seviye haritasıyla ilerlenen, oyun sonunda Türkçe koç yorumu veren ve oyuncunun kendi hatalarından "intikam bulmacaları" üreten bir çekirdek.
 
 **İlk dilim (PR #1, birleştirildi):** tarayıcıda bir bota karşı baştan sona oyun (Stockfish Web Worker içinde), seviye haritası, konuşma balonları, oyun sonu koç raporu, 7 dilde arayüz, lint + typecheck + birim testleri + CI.
 
@@ -194,7 +194,7 @@ Beta diller `LOCALES` kaydında `status: 'beta'` ile işaretlidir; dil seçicide
 
 - Her `dil/adalanı.json` ayrı bir parça (chunk) olarak derlenir ve **yalnızca etkin dil** indirilir (`i18next-resources-to-backend` + dinamik `import()`). Tr/en için yedek dil yüklenmez (anahtar eşliği testle garanti); beta dillerde güvenlik ağı olarak İngilizce yedek kullanılır.
 - İlk ziyaret: kayıtlı seçim → `navigator.languages` içindeki ilk desteklenen dil (`de-AT`→`de`, `zh-CN`/`zh`→`zh-Hans`; geleneksel Çince eşlenmez) → Türkçe.
-- Seçim `localStorage` (`nexus.locale`) içinde saklanır; `<html lang dir>` güncellenir.
+- Seçim `localStorage` (`gambitzone.locale`) içinde saklanır; `<html lang dir>` güncellenir.
 
 ### 6.4 Satranç notasyonu
 
@@ -225,7 +225,7 @@ Motor ve depolama her zaman UCI/İngilizce SAN kullanır; yerelleştirme yalnız
 3. `npm test` eksik/fazla anahtarı, eksik çoğul biçimini, uyumsuz yer tutucuyu ve boş metni yakalar.
 4. Ana dili konuşan gözden geçirici onayladığında dilin `status`'u `stable` yapılır (beta etiketi kalkar).
 5. Yeni dil eklemek: `LOCALES`'e bir girdi + `locales/<kod>/{common,bots,coach,puzzles,about}.json`. Başka kod değişikliği gerekmez.
-6. **"Çeviri hatası bildir":** beta dillerde dil notunun yanında küçük bir bağlantı; `contact@nexuschess.com` adresine konu satırında dil ve ekran (`[translation][fr] puzzles`), gövdede doldurulacak şablonla e-posta açar. Serbest metin analitiğe gitmez; yalnızca `translation_report_opened { locale }` sayılır. İleride çeviri platformunun geri bildirim aracına bağlanabilir.
+6. **"Çeviri hatası bildir":** beta dillerde dil notunun yanında küçük bir bağlantı; `contact@gambitzone.com` adresine konu satırında dil ve ekran (`[translation][fr] puzzles`), gövdede doldurulacak şablonla e-posta açar. Serbest metin analitiğe gitmez; yalnızca `translation_report_opened { locale }` sayılır. İleride çeviri platformunun geri bildirim aracına bağlanabilir.
 7. İleride: Crowdin/Weblate/Tolgee gibi bir çeviri platformu JSON dosyalarını doğrudan senkronlayabilir.
 
 ## 7. Arka uç ve veri modeli
@@ -245,7 +245,7 @@ Motor ve depolama her zaman UCI/İngilizce SAN kullanır; yerelleştirme yalnız
 - chess.js: BSD-2-Clause · react-chessboard: MIT · i18next ailesi: MIT · posthog-js: MIT/Apache-2.0.
 - **chessground (GPL) ve Lichess kodu kullanılmaz.** Kurallar `.cursor/rules/licensing.mdc` içinde.
 - **Stockfish (GPL-3.0)** ayrı bir program olarak çalışır: `public/engine/` altında, Web Worker'da, yalnızca UCI ile. Yanında `Copying.txt` (GPL metni) ve `SOURCE.md` (kaynak bağlantıları + **yazılı kaynak teklifi**) dağıtılır. Yükümlülük: dağıttığımız motor ikilisinin tam kaynağını en az 3 yıl talep edene sağlamak; motor sürümü değişince bu dosyalar güncellenir. Mağaza (Capacitor) dağıtımında da aynı dosyalar uygulama içinde erişilebilir olmalı. Hukuki onay önerilir.
-- **Hakkında sayfası (uygulandı, 7 dilde):** uygulama lisansı (tüm hakları saklıdır), Stockfish'in ayrı program olarak kullanıldığı ve GPLv3 ile lisanslandığı bildirimi, tam sürüm + derleme (paket/commit), kaynak bağlantısı (`Kutbedin/stockfish-wasm-fork` çatalında dağıttığımız commit: https://github.com/Kutbedin/stockfish-wasm-fork/tree/0d5dd7944f88c817c07a26bc4fb1905d5f9c46d6; çatalda `v19.0.1` etiketi olmadığı için doğrudan commit'e bağlanır), üst proje bağlantısı, GPLv3 tam metni (`/engine/Copying.txt`), yazılı kaynak teklifi ve iletişim (`contact@nexuschess.com`, yer tutucu), üçüncü taraf bileşen listesi, gizlilik özeti. Yer tutucular `src/config.ts` içinde.
+- **Hakkında sayfası (uygulandı, 7 dilde):** uygulama lisansı (tüm hakları saklıdır), Stockfish'in ayrı program olarak kullanıldığı ve GPLv3 ile lisanslandığı bildirimi, tam sürüm + derleme (paket/commit), kaynak bağlantısı (`Kutbedin/stockfish-wasm-fork` çatalında dağıttığımız commit: https://github.com/Kutbedin/stockfish-wasm-fork/tree/0d5dd7944f88c817c07a26bc4fb1905d5f9c46d6; çatalda `v19.0.1` etiketi olmadığı için doğrudan commit'e bağlanır), üst proje bağlantısı, GPLv3 tam metni (`/engine/Copying.txt`), yazılı kaynak teklifi ve iletişim (`contact@gambitzone.com`, yer tutucu), üçüncü taraf bileşen listesi, gizlilik özeti. Yer tutucular `src/config.ts` içinde.
 - Lichess bulmaca veritabanı: CC0 (Hakkında sayfasında ve bulmaca ekranında kaynak gösterilir).
 
 ## 10. Test stratejisi ve CI
@@ -284,7 +284,7 @@ Motor ve depolama her zaman UCI/İngilizce SAN kullanır; yerelleştirme yalnız
 ## 12. Açık kararlar (kullanıcıdan)
 
 1. **Arka uç:** ~~Supabase mı Hono mu?~~ → Supabase anonim oturum sonraki fazda (karar verildi). Açık: hesap bağlama (e-posta/Apple/Google) ne zaman?
-2. ~~Uygulama lisansı~~ → **özel mülk, tüm hakları saklıdır** (karar verildi). `Kutbedin/stockfish-wasm-fork` açıldı ve bağlandı. Açık: `contact@nexuschess.com` yayından önce onaylanmalı.
+2. ~~Uygulama lisansı~~ → **özel mülk, tüm hakları saklıdır** (karar verildi). `Kutbedin/stockfish-wasm-fork` açıldı ve bağlandı. Açık: `contact@gambitzone.com` yayından önce onaylanmalı.
 3. ~~Bot adları~~ → her dilde Türkçe (karar verildi). Açık: 4. bot "Fil Filiz" adı ve "Çapraz Ustası" unvanı uygun mu?
 4. **Zorluk kalibrasyonu:** Gösterilen Elo'lar tahmini; ilk oyuncu verisiyle mi ayarlansın?
 5. **Analitik:** ~~PostHog EU~~ (karar verildi, çerezsiz). Açık: KVKK aydınlatma metni; okul modu bayrağının sınıf koduyla otomatik açılması (Faz 1b).

@@ -53,17 +53,17 @@ describe('App shell', () => {
 
   it('renders Turkish by default, switches language, and persists the choice', async () => {
     renderApp()
-    expect(await screen.findByRole('heading', { level: 1, name: 'Nexus Satranç' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'GambitZone' })).toBeInTheDocument()
     expect(document.documentElement.lang).toBe('tr')
 
     await act(() => userEvent.selectOptions(screen.getByRole('combobox'), 'de'))
-    expect(await screen.findByRole('heading', { level: 1, name: 'Nexus Schach' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'GambitZone' })).toBeInTheDocument()
     expect(screen.getByRole('note')).toHaveTextContent(/maschinell/)
     expect(localStorage.getItem(LOCALE_STORAGE_KEY)).toBe('de')
     expect(document.documentElement.lang).toBe('de')
 
     await act(() => userEvent.selectOptions(screen.getByRole('combobox'), 'en'))
-    expect(await screen.findByRole('heading', { level: 1, name: 'Nexus Chess' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'GambitZone' })).toBeInTheDocument()
     expect(screen.queryByRole('note')).toBeNull()
   })
 
@@ -72,7 +72,7 @@ describe('App shell', () => {
     await act(() => i18n.changeLanguage('fr'))
     const link = await screen.findByRole('link', { name: 'Signaler une erreur de traduction' })
     const href = link.getAttribute('href')!
-    expect(href).toMatch(/^mailto:contact@nexuschess\.com\?subject=/)
+    expect(href).toMatch(/^mailto:contact@gambitzone\.com\?subject=/)
     expect(decodeURIComponent(href)).toContain('[translation][fr] map')
   })
 
@@ -134,6 +134,6 @@ describe('App shell', () => {
     expect(screen.getByText(/All rights reserved/)).toBeInTheDocument()
     expect(screen.getByText(/0d5dd7944f88c817c07a26bc4fb1905d5f9c46d6/, { selector: 'code' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'https://github.com/Kutbedin/stockfish-wasm-fork/tree/0d5dd7944f88c817c07a26bc4fb1905d5f9c46d6' })).toBeInTheDocument()
-    expect(screen.getAllByRole('link', { name: 'contact@nexuschess.com' }).length).toBeGreaterThan(0)
+    expect(screen.getAllByRole('link', { name: 'contact@gambitzone.com' }).length).toBeGreaterThan(0)
   })
 })

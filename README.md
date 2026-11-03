@@ -1,4 +1,4 @@
-# Nexus Chess
+# GambitZone
 
 Turkish-first, single-player-first web chess: bots with personalities, a level map with bosses,
 puzzles, a post-game coach, and personal "revenge" puzzles built from your own mistakes.
