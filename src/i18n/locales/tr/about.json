@@ -21,7 +21,13 @@
   },
   "privacy": {
     "title": "Gizlilik",
-    "body": "Hesap gerekmez; ilerlemen yalnızca bu cihazda saklanır. Kullanım istatistikleri çerezsiz ve anonimdir; kişisel veri, ad veya oyun içeriği gönderilmez. Okul modunda istatistikler tamamen kapalıdır."
+    "body": "Hesap gerekmez; ilerlemen yalnızca bu cihazda saklanır. Kullanım istatistikleri çerezsiz ve anonimdir; kişisel veri, ad veya oyun içeriği gönderilmez. Okul modunda istatistikler tamamen kapalıdır.",
+    "bodyCloud": "Hesap gerekmez. İlerlemen bu cihazda saklanır ve ayrıca anonim bir kimlikle bulutta yedeklenir (Supabase); ad, e-posta veya doğum tarihi istenmez. Kullanım istatistikleri çerezsiz ve anonimdir; kişisel veri, ad veya oyun içeriği gönderilmez. Okul modunda istatistikler ve bulut yedeği tamamen kapalıdır."
+  },
+  "account": {
+    "title": "Hesabını bağla",
+    "body": "Yakında: e-posta adresini ekleyerek ilerlemeni başka bir cihaza taşıyabileceksin. Şimdilik yedeğin bu cihazdaki anonim kimliğe bağlı.",
+    "soon": "Yakında"
   },
   "contact": {
     "title": "İletişim"

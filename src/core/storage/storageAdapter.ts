@@ -11,8 +11,8 @@ export const EMPTY_PUZZLE_STATS: PuzzleStats = { version: 1, solved: {} }
 
 /**
  * Persistence port for everything the player accumulates.
- * Phase 1a: local adapter (localStorage). Next phase: Supabase with anonymous auth, because
- * Safari (ITP) evicts script-writable storage after 7 days without interaction.
+ * Local adapter (localStorage) is always the primary/offline cache; when Supabase is configured,
+ * `CloudSyncedStorage` wraps it and backs it up under an anonymous account.
  */
 export interface StorageAdapter {
   loadProgress(): Promise<PlayerProgress>
@@ -21,4 +21,6 @@ export interface StorageAdapter {
   saveRevenge(entries: readonly RevengeEntry[]): Promise<void>
   loadPuzzleStats(): Promise<PuzzleStats>
   savePuzzleStats(stats: PuzzleStats): Promise<void>
+  /** Called when stored data changed underneath the UI (e.g. a cloud sync merged newer records); reload then. */
+  subscribe?(listener: () => void): () => void
 }

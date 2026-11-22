@@ -5,8 +5,8 @@ import { STORAGE_KEYS } from '../storageKeys'
 import { migrateLegacyLocalStorage } from './storageMigration'
 
 /**
- * Guest storage in localStorage. Safari may evict it after 7 days without a visit;
- * the Supabase adapter (anonymous auth) replaces it next phase.
+ * Guest storage in localStorage: always the primary/offline cache. Safari may evict it after
+ * 7 days without a visit, so `CloudSyncedStorage` backs it up to Supabase when configured.
  */
 export class LocalStorageAdapter implements StorageAdapter {
   private readonly storage: Storage
