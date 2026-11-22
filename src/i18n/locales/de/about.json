@@ -21,7 +21,13 @@
   },
   "privacy": {
     "title": "Datenschutz",
-    "body": "Kein Konto nötig; dein Fortschritt wird nur auf diesem Gerät gespeichert. Nutzungsstatistiken sind cookielos und anonym; es werden keine personenbezogenen Daten, Namen oder Partieinhalte gesendet. Im Schulmodus sind Statistiken vollständig deaktiviert."
+    "body": "Kein Konto nötig; dein Fortschritt wird nur auf diesem Gerät gespeichert. Nutzungsstatistiken sind cookielos und anonym; es werden keine personenbezogenen Daten, Namen oder Partieinhalte gesendet. Im Schulmodus sind Statistiken vollständig deaktiviert.",
+    "bodyCloud": "Kein Konto nötig. Dein Fortschritt wird auf diesem Gerät gespeichert und zusätzlich unter einer anonymen Kennung in der Cloud gesichert (Supabase); Name, E-Mail oder Geburtsdatum werden nicht abgefragt. Nutzungsstatistiken sind cookielos und anonym; es werden keine personenbezogenen Daten, Namen oder Partieinhalte gesendet. Im Schulmodus sind Statistiken und Cloud-Sicherung vollständig deaktiviert."
+  },
+  "account": {
+    "title": "Konto verknüpfen",
+    "body": "Demnächst: Füge deine E-Mail-Adresse hinzu, um deinen Fortschritt auf ein anderes Gerät mitzunehmen. Bis dahin ist deine Sicherung an die anonyme Kennung auf diesem Gerät gebunden.",
+    "soon": "Demnächst"
   },
   "contact": {
     "title": "Kontakt"

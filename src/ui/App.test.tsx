@@ -135,5 +135,32 @@ describe('App shell', () => {
     expect(screen.getByText(/0d5dd7944f88c817c07a26bc4fb1905d5f9c46d6/, { selector: 'code' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'https://github.com/Kutbedin/stockfish-wasm-fork/tree/0d5dd7944f88c817c07a26bc4fb1905d5f9c46d6' })).toBeInTheDocument()
     expect(screen.getAllByRole('link', { name: 'contact@gambitzone.com' }).length).toBeGreaterThan(0)
+    expect(screen.getByText(/stored only on this device/)).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Link your account' })).toBeNull()
+  })
+
+  it('with cloud backup, About explains the anonymous backup and can show the "link account" teaser', async () => {
+    renderApp({ ...services(), features: { cloudBackup: true, accountLinking: true } })
+    await userEvent.click(await screen.findByRole('button', { name: 'Hakkında' }))
+    expect(await screen.findByText(/anonim bir kimlikle bulutta yedeklenir/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Hesabını bağla' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Yakında' })).toBeDisabled()
+  })
+
+  it('reloads progress when a background sync changes stored data', async () => {
+    let listener = () => {}
+    let progress = EMPTY_PROGRESS
+    renderApp(
+      services({
+        ...memoryStorage(),
+        loadProgress: async () => progress,
+        subscribe: (l) => ((listener = l), () => {}),
+      }),
+    )
+    const path = await screen.findByRole('list')
+    expect(within(path).getAllByRole('button')[1]).toBeDisabled()
+    progress = { version: 1, nodes: { 'w1-1': { completed: true, stars: 3, attempts: 1 } } }
+    act(() => listener())
+    await vi.waitFor(() => expect(within(path).getAllByRole('button')[1]).toBeEnabled())
   })
 })

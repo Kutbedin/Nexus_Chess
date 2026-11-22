@@ -21,7 +21,13 @@
   },
   "privacy": {
     "title": "Privacidad",
-    "body": "No necesitas cuenta; tu progreso se guarda solo en este dispositivo. Las estadísticas de uso son anónimas y sin cookies; no se envían datos personales, nombres ni contenido de las partidas. En el modo escuela, las estadísticas están completamente desactivadas."
+    "body": "No necesitas cuenta; tu progreso se guarda solo en este dispositivo. Las estadísticas de uso son anónimas y sin cookies; no se envían datos personales, nombres ni contenido de las partidas. En el modo escuela, las estadísticas están completamente desactivadas.",
+    "bodyCloud": "No necesitas cuenta. Tu progreso se guarda en este dispositivo y además se respalda en la nube con un identificador anónimo (Supabase); no se pide nombre, correo ni fecha de nacimiento. Las estadísticas de uso son anónimas y sin cookies; no se envían datos personales, nombres ni contenido de las partidas. En el modo escuela, las estadísticas y la copia en la nube están completamente desactivadas."
+  },
+  "account": {
+    "title": "Vincula tu cuenta",
+    "body": "Próximamente: añade tu correo electrónico para llevar tu progreso a otro dispositivo. Por ahora, tu copia está ligada al identificador anónimo de este dispositivo.",
+    "soon": "Próximamente"
   },
   "contact": {
     "title": "Contacto"

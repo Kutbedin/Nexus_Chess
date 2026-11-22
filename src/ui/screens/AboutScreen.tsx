@@ -9,15 +9,20 @@ const THIRD_PARTY = [
   { name: 'React', license: 'MIT', url: 'https://react.dev' },
   { name: 'i18next / react-i18next', license: 'MIT', url: 'https://www.i18next.com' },
   { name: 'posthog-js', license: 'MIT', url: 'https://github.com/PostHog/posthog-js' },
+  { name: 'supabase-js', license: 'MIT', url: 'https://github.com/supabase/supabase-js' },
   { name: 'Lichess puzzle database', license: 'CC0', url: 'https://database.lichess.org/#puzzles' },
 ] as const
 
 interface Props {
   engine: EngineInfo
+  /** Progress is also backed up to the cloud (changes the privacy text). */
+  cloudBackup?: boolean
+  /** Shows the "link account" teaser. */
+  accountLinking?: boolean
   onExit: () => void
 }
 
-export function AboutScreen({ engine, onExit }: Props) {
+export function AboutScreen({ engine, cloudBackup = false, accountLinking = false, onExit }: Props) {
   const { t } = useTranslation('about')
   const gplUrl = `${import.meta.env.BASE_URL}engine/Copying.txt`
   return (
@@ -67,7 +72,17 @@ export function AboutScreen({ engine, onExit }: Props) {
       </ul>
 
       <h3>{t('privacy.title')}</h3>
-      <p>{t('privacy.body')}</p>
+      <p>{t(cloudBackup ? 'privacy.bodyCloud' : 'privacy.body')}</p>
+
+      {accountLinking && (
+        <section className="account-link" aria-labelledby="account-link-title">
+          <h3 id="account-link-title">{t('account.title')}</h3>
+          <p>{t('account.body')}</p>
+          <button type="button" disabled>
+            {t('account.soon')}
+          </button>
+        </section>
+      )}
 
       <h3>{t('contact.title')}</h3>
       <p>
