@@ -2,6 +2,8 @@ import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { initI18n } from './i18n/i18n'
 import { createAnalytics } from './platform/analytics'
+import { CloudSyncedStorage } from './core/storage/cloudSyncedStorage'
+import { createStorage } from './platform/cloudStorage'
 import { LocalStorageAdapter } from './platform/localStorageAdapter'
 import { migrateLegacyLocalStorage, STORAGE_KEYS } from './platform/storageMigration'
 import { resolveSchoolMode } from './platform/schoolMode'
@@ -22,13 +24,19 @@ function firstOpenAt(): number {
 async function bootstrap() {
   migrateLegacyLocalStorage(localStorage)
   const schoolMode = resolveSchoolMode(location.search, localStorage, import.meta.env.VITE_SCHOOL_MODE as string | undefined)
-  const [, analytics] = await Promise.all([
+  const cloud = {
+    url: import.meta.env.VITE_SUPABASE_URL as string | undefined,
+    anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined,
+    schoolMode,
+  }
+  const [, analytics, storage] = await Promise.all([
     initI18n(),
     createAnalytics({
       key: import.meta.env.VITE_POSTHOG_KEY as string | undefined,
       host: import.meta.env.VITE_POSTHOG_HOST as string | undefined,
       schoolMode,
     }),
+    createStorage(cloud),
   ])
   void LocalStorageAdapter.requestPersistence()
   if (import.meta.env.PROD && 'serviceWorker' in navigator) {
@@ -37,8 +45,12 @@ async function bootstrap() {
 
   const services = {
     engines: new StockfishWasmProvider(),
-    storage: new LocalStorageAdapter(),
+    storage,
     analytics,
+    features: {
+      cloudBackup: storage instanceof CloudSyncedStorage,
+      accountLinking: import.meta.env.VITE_ACCOUNT_LINKING === 'true',
+    },
     firstOpenAt: firstOpenAt(),
   }
   createRoot(document.getElementById('root')!).render(

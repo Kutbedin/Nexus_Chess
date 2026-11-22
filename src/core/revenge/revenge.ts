@@ -53,8 +53,10 @@ export interface RevengeEntry {
   review: ReviewState
 }
 
+export const MAX_REVENGE_ENTRIES = 200
+
 /** Adds new puzzles (skipping duplicate ids and positions) and caps the queue size. */
-export function addRevengePuzzles(entries: readonly RevengeEntry[], puzzles: readonly RevengePuzzle[], maxEntries = 200): RevengeEntry[] {
+export function addRevengePuzzles(entries: readonly RevengeEntry[], puzzles: readonly RevengePuzzle[], maxEntries = MAX_REVENGE_ENTRIES): RevengeEntry[] {
   const ids = new Set(entries.map((e) => e.puzzle.id))
   const fens = new Set(entries.map((e) => e.puzzle.fen))
   const added = puzzles

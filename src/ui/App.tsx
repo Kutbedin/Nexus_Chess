@@ -30,6 +30,14 @@ export interface AppServices {
   analytics: AnalyticsPort
   firstOpenAt: number
   now?: () => number
+  features?: AppFeatures
+}
+
+export interface AppFeatures {
+  /** Progress is backed up to the cloud under an anonymous account. */
+  cloudBackup: boolean
+  /** Shows the (not yet functional) "link account" teaser; needs cloud backup. */
+  accountLinking: boolean
 }
 
 type Screen =
@@ -50,10 +58,14 @@ export function App({ services }: { services: AppServices }) {
   const [newRevenge, setNewRevenge] = useState(0)
 
   useEffect(() => {
-    void services.storage.loadProgress().then(setProgress)
-    void services.storage.loadPuzzleStats().then(setPuzzleStats)
-    void services.storage.loadRevenge().then(setRevenge)
+    const load = () => {
+      void services.storage.loadProgress().then(setProgress)
+      void services.storage.loadPuzzleStats().then(setPuzzleStats)
+      void services.storage.loadRevenge().then(setRevenge)
+    }
+    load()
     services.analytics.track(appOpenedEvent(services.firstOpenAt, Date.now()))
+    return services.storage.subscribe?.(load)
   }, [services])
 
   const node = screen.name === 'game' ? screen.node : null
@@ -209,7 +221,14 @@ export function App({ services }: { services: AppServices }) {
           />
         )}
         {screen.name === 'revenge' && <RevengeScreen entries={revenge} now={now()} onAttempt={handleRevengeAttempt} onExit={goMap} />}
-        {screen.name === 'about' && <AboutScreen engine={services.engines.info} onExit={goMap} />}
+        {screen.name === 'about' && (
+          <AboutScreen
+            engine={services.engines.info}
+            cloudBackup={services.features?.cloudBackup ?? false}
+            accountLinking={(services.features?.cloudBackup && services.features.accountLinking) ?? false}
+            onExit={goMap}
+          />
+        )}
       </main>
     </div>
   )

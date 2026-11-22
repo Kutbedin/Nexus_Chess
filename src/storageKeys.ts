@@ -15,4 +15,6 @@ export const STORAGE_KEYS = {
   progress: 'gambitzone.progress.v1',
   revenge: 'gambitzone.revenge.v1',
   puzzles: 'gambitzone.puzzles.v1',
+  /** Per-record change times for cloud backup (no legacy counterpart). */
+  syncStamps: 'gambitzone.sync.v1',
 } as const

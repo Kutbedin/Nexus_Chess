@@ -21,7 +21,13 @@
   },
   "privacy": {
     "title": "Confidentialité",
-    "body": "Aucun compte n'est nécessaire ; ta progression est stockée uniquement sur cet appareil. Les statistiques d'utilisation sont anonymes et sans cookies ; aucune donnée personnelle, aucun nom ni contenu de partie n'est envoyé. En mode école, les statistiques sont entièrement désactivées."
+    "body": "Aucun compte n'est nécessaire ; ta progression est stockée uniquement sur cet appareil. Les statistiques d'utilisation sont anonymes et sans cookies ; aucune donnée personnelle, aucun nom ni contenu de partie n'est envoyé. En mode école, les statistiques sont entièrement désactivées.",
+    "bodyCloud": "Aucun compte n'est nécessaire. Ta progression est stockée sur cet appareil et sauvegardée dans le cloud sous un identifiant anonyme (Supabase) ; aucun nom, e-mail ni date de naissance n'est demandé. Les statistiques d'utilisation sont anonymes et sans cookies ; aucune donnée personnelle, aucun nom ni contenu de partie n'est envoyé. En mode école, les statistiques et la sauvegarde dans le cloud sont entièrement désactivées."
+  },
+  "account": {
+    "title": "Lier ton compte",
+    "body": "Bientôt : ajoute ton adresse e-mail pour retrouver ta progression sur un autre appareil. Pour l'instant, ta sauvegarde est liée à l'identifiant anonyme de cet appareil.",
+    "soon": "Bientôt"
   },
   "contact": {
     "title": "Contact"

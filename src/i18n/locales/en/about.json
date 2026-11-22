@@ -21,7 +21,13 @@
   },
   "privacy": {
     "title": "Privacy",
-    "body": "No account needed; your progress is stored only on this device. Usage statistics are cookieless and anonymous; no personal data, names, or game content are sent. In school mode, statistics are completely off."
+    "body": "No account needed; your progress is stored only on this device. Usage statistics are cookieless and anonymous; no personal data, names, or game content are sent. In school mode, statistics are completely off.",
+    "bodyCloud": "No account needed. Your progress is stored on this device and also backed up to the cloud under an anonymous ID (Supabase); no name, email, or birth date is asked for. Usage statistics are cookieless and anonymous; no personal data, names, or game content are sent. In school mode, statistics and cloud backup are completely off."
+  },
+  "account": {
+    "title": "Link your account",
+    "body": "Coming soon: add your email address to take your progress to another device. For now, your backup is tied to the anonymous ID on this device.",
+    "soon": "Coming soon"
   },
   "contact": {
     "title": "Contact"

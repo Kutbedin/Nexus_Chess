@@ -20,9 +20,9 @@ GambitZone, Chess.com ve Lichess ile **tek oyunculu deneyim** üzerinden rekabet
 | Motor | Stockfish 19 WASM, "lite single-threaded" (~1,8 MB) | Web Worker'da ayrı program olarak çalışır; COOP/COEP başlığı gerektirmez. |
 | Çoklu dil | i18next + react-i18next + i18next-resources-to-backend | Dil başına tembel yükleme, çoğul kuralları, bağlam (context) desteği. |
 | Analitik | PostHog (EU), çerezsiz + anonim, yalnızca anahtar varsa ve tembel yüklenir | Okul/öğrenci modunda tamamen kapalı (hiç yüklenmez). Otomatik yakalama ve oturum kaydı kapalı. |
-| Depolama | `StorageAdapter` → şimdilik `localStorage` | Sonraki faz: Supabase anonim oturum (Safari 7 gün silme kuralı yüzünden). |
+| Depolama | `StorageAdapter` → `localStorage` (birincil, çevrimdışı) + isteğe bağlı Supabase bulut yedeği | Anonim oturum, kayıt ekranı yok; anahtar yoksa tamamen yerel. Bkz. §7. |
 | Çevrimdışı | Elle yazılmış service worker (`public/sw.js`) | Bulmaca paketleri + motor kurulumda önbelleğe alınır; Capacitor'da dosyalar zaten pakette. |
-| Arka uç | **Öneri: Supabase** (Postgres + Auth + RLS + Edge Functions) | 1a'da arka uç yok (misafir oyun, localStorage); arayüzler hazır. |
+| Arka uç | **Supabase** (Postgres + Auth + RLS + Edge Functions) | Şimdilik yalnızca ilerleme yedeği (anonim kullanıcı, RLS). Kurulum: `docs/supabase-setup.md`. |
 | Test | Vitest + Testing Library + jsdom | Hızlı, Vite ile aynı yapılandırma. |
 | Lint | oxlint | Vite şablonunun varsayılanı, çok hızlı. |
 
@@ -79,14 +79,15 @@ src/
     notation/     yerelleştirilmiş SAN (taş harfleri)
     classroom/    Faz 1b veri modeli (yalnızca tipler + kod üretici)
     analytics/    AnalyticsPort ve olay tipleri
-  platform/       stockfishEngine (+ StockfishWasmProvider), localStorageAdapter, analytics (PostHog), schoolMode, puzzlePacks
+  platform/       stockfishEngine (+ StockfishWasmProvider), localStorageAdapter, cloudStorage + supabaseBackend (bulut yedeği), analytics (PostHog), schoolMode, puzzlePacks
   i18n/           locales.ts (kayıt), i18n.ts (başlatma/algılama), locales/<dil>/{common,bots,coach,puzzles,about}.json
   config.ts       iletişim adresi, kaynak deposu bağlantısı (yer tutucular)
   ui/             App, components/, screens/, hooks/
 scripts/copy-engine.mjs   Stockfish dosyalarını public/engine/'a kopyalar (postinstall)
 scripts/build-puzzles.mjs Lichess CSV'sinden doğrulanmış bulmaca paketleri üretir (public/puzzles/)
 public/sw.js              service worker (çevrimdışı)
-supabase/migrations/      önerilen şema (henüz uygulanmadı)
+supabase/migrations/      bulut yedeği şeması (RLS); kurulum: docs/supabase-setup.md
+supabase/proposals/       Faz 1b sınıf şeması taslağı (henüz uygulanmaz)
 ```
 
 ## 5. Modüller
@@ -231,13 +232,18 @@ Motor ve depolama her zaman UCI/İngilizce SAN kullanır; yerelleştirme yalnız
 ## 7. Arka uç ve veri modeli
 
 - **`StorageAdapter`** (`src/core/storage/storageAdapter.ts`): ilerleme (`PlayerProgress`), bulmaca istatistikleri (`PuzzleStats`) ve intikam kuyruğu (`RevengeEntry[]`) için yükle/kaydet. Faz 1a uygulaması: `LocalStorageAdapter` (sürümlü anahtarlar, bozuk veride güvenli varsayılan) + `navigator.storage.persist()` isteği.
-- **Neden sonraki faz Supabase anonim oturum:** Safari (ITP), 7 gün etkileşim olmayan sitelerin betikle yazılan depolamasını (localStorage, IndexedDB) siler; misafir oyuncunun ilerlemesi kaybolabilir. Plan: ilk açılışta `signInAnonymously()` → aynı arayüzü uygulayan `SupabaseStorageAdapter` (yerel önbellek + sunucu eşitleme) → isteğe bağlı hesap bağlama. UI ve çekirdek değişmez.
-- Önerilen Supabase şeması: `supabase/migrations/0001_init.sql` (`player_progress`, `revenge_puzzles`, RLS politikaları). Henüz uygulanmadı.
+- **Bulut yedeği (Supabase anonim oturum):** `VITE_SUPABASE_URL` ve `VITE_SUPABASE_ANON_KEY` tanımlıysa `CloudSyncedStorage` (`src/core/storage/cloudSyncedStorage.ts`) `LocalStorageAdapter`'ı sarar. Kayıt ekranı yok: ilk açılışta `signInAnonymously()`. Tanımlı değilse (CI, yerel geliştirme) veya okul modundaysa uygulama tamamen yereldir ve supabase-js hiç yüklenmez.
+  - **Yerel öncelikli:** okuma/yazma her zaman localStorage'a gider (çevrimdışı çalışır). Değişiklikler kayıt bazında zaman damgalanır (`gambitzone.sync.v1`) ve arka planda gönderilir (2 sn gecikmeli; sekme gizlenince hemen).
+  - **Uzlaştırma:** açılışta ve `online` olayında tam eşitleme: çek → kayıt bazında birleştir → farkları gönder. İlk yükleme buluta en fazla 2,5 sn bekler, sonra yerel veriyle açılır. Birleştirme sonrası UI `subscribe()` ile yeniden yükler.
+  - **Çakışma kuralı:** kayıt = seviye düğümü / çözülmüş bulmaca / intikam bulmacası. Her kayıtta en yeni `updatedAt` kazanır; kümeler birleşir (iki taraftaki intikam bulmacaları korunur, konum tekrarları elenir, 200 sınırı uygulanır). Sunucuda `keep_newest` tetikleyicisi eski bir kopyanın yeni olanın üzerine yazılmasını engeller. UI'nin eski durumla yaptığı kayıt, arka planda gelen kayıtları geri almaz (üç yollu kayıt).
+  - **Şema:** `supabase/migrations/0001_cloud_backup.sql` → `player_progress`, `puzzle_stats`, `revenge_puzzles` (`user_id, id, data jsonb, updated_at`), RLS: herkes yalnızca kendi satırlarını görür/yazar; `anon` rolünün erişimi yok. Kişisel veri yok (ad, e-posta, doğum tarihi, serbest metin). Testler: PGlite ile gerçek migration üzerinde RLS ve tetikleyici.
+  - **Sınır (önemli):** anonim oturum anahtarı da localStorage'da durur. Safari'nin 7 günlük silmesi oturumu da silerse cihaz yeni bir anonim kullanıcı olur; eski yedek sunucuda kalır ama bu cihazdan erişilemez. Yedeğin cihazlar ve silmeler arasında geri getirilmesi "hesap bağlama" ile gelir. Ana ekrana eklenen PWA'lar bu silmeden etkilenmez.
+- **Hesap bağlama (tasarım, henüz yok):** `AccountLinkPort` (`accountStatus()`, `requestEmailLink(email)`). Supabase'de anonim kullanıcıya `auth.updateUser({ email })` ile e-posta eklenir; onay bağlantısına tıklanınca **aynı kullanıcı kimliği** kalıcı olur, satırlar kopyalanmadan oyuncunun olur. Başka cihazda e-postayla giriş → `pull()` → birleştirme. Yalnızca yetişkinler (oyuncu/öğretmen); okul modunda hiç gösterilmez. Arayüz taslağı: `VITE_ACCOUNT_LINKING=true` iken Hakkında sayfasında devre dışı "Hesabını bağla — Yakında" kutusu. Açık: Supabase "Site URL"/yönlendirme ayarı, e-posta şablonu (TR), KVKK metni, eski anonim kullanıcıların temizliği.
 
 ## 8. Faz 1b — yalnızca veri modeli (UI yok)
 
 - **Öğretmen / sunum modu** (ETAP/Pardus akıllı tahtalar): `PresentationDeck` → `PresentationSlide { fen, annotations[], note }`; ok/kare vurgusu dört renkle, büyük dokunma hedefleri. Tahta bileşeni zaten tıkla-tıkla hamleyi destekliyor.
-- **Anonim sınıflar**: `Classroom { code: "KALE-4521", teacherId, label: "5-B" }`, `StudentSeat { code, classCode, avatar (emoji), progressId }`. Öğrenciler hakkında ad, e-posta, doğum tarihi **saklanmaz**; öğrenci hesabı yoktur, erişim koda dayalı bir Edge Function üzerinden olur. Şema ve RLS politikaları migration dosyasında.
+- **Anonim sınıflar**: `Classroom { code: "KALE-4521", teacherId, label: "5-B" }`, `StudentSeat { code, classCode, avatar (emoji), progressId }`. Öğrenciler hakkında ad, e-posta, doğum tarihi **saklanmaz**; öğrenci hesabı yoktur, erişim koda dayalı bir Edge Function üzerinden olur. Şema ve RLS taslağı `supabase/proposals/phase-1b-classrooms.sql` dosyasında (henüz uygulanmaz).
 
 ## 9. Lisanslar
 
@@ -279,11 +285,11 @@ Motor ve depolama her zaman UCI/İngilizce SAN kullanır; yerelleştirme yalnız
 - 7 dil, tembel yükleme, tarayıcı dili algılama, kalıcı seçim, yerelleştirilmiş notasyon, beta etiketi.
 - PostHog kancası (anahtar yoksa kapalı). Faz 1b tipleri ve SQL şeması.
 
-**Henüz yok (sonraki adımlar):** Supabase anonim oturum + `SupabaseStorageAdapter`, KVKK aydınlatma metni, oyuncu bulmaca puanı (Glicko) ve kişisel öneri, Dünya 2, ses/animasyon, PWA manifestosu + Capacitor paketleme.
+**Henüz yok (sonraki adımlar):** hesap bağlama (e-posta), KVKK aydınlatma metni, oyuncu bulmaca puanı (Glicko) ve kişisel öneri, Dünya 2, ses/animasyon, PWA manifestosu + Capacitor paketleme.
 
 ## 12. Açık kararlar (kullanıcıdan)
 
-1. **Arka uç:** ~~Supabase mı Hono mu?~~ → Supabase anonim oturum sonraki fazda (karar verildi). Açık: hesap bağlama (e-posta/Apple/Google) ne zaman?
+1. **Arka uç:** ~~Supabase mı Hono mu?~~ → Supabase anonim oturum + bulut yedeği (yapıldı). Açık: hesap bağlama (e-posta/Apple/Google) ne zaman?
 2. ~~Uygulama lisansı~~ → **özel mülk, tüm hakları saklıdır** (karar verildi). `Kutbedin/stockfish-wasm-fork` açıldı ve bağlandı. Açık: `contact@gambitzone.com` yayından önce onaylanmalı.
 3. ~~Bot adları~~ → her dilde Türkçe (karar verildi). Açık: 4. bot "Fil Filiz" adı ve "Çapraz Ustası" unvanı uygun mu?
 4. **Zorluk kalibrasyonu:** Gösterilen Elo'lar tahmini; ilk oyuncu verisiyle mi ayarlansın?
@@ -298,5 +304,5 @@ Motor ve depolama her zaman UCI/İngilizce SAN kullanır; yerelleştirme yalnız
 - Feature Extractor sezgiseldir (ör. asılı taş tanımı basit); yanlış pozitifler koçun güvenilirliğini düşürür → gerçek oyunlarla ayarlama ve gerektiğinde motorla teyit.
 - Makine çevirisi kalitesi (özellikle koç şablonlarında dil bilgisi) → beta etiketi + inceleme süreci.
 - react-chessboard v5 yeni bir sürüm; gerekirse cm-chessboard'a geçiş UI katmanıyla sınırlı kalır. (Bilinen tuzak: tahta `id`'si CSS seçicisinde kullanılıyor; `:` gibi karakterler uygulamayı çökertiyordu, artık temizleniyor ve testle korunuyor.)
-- Safari'nin 7 günlük depolama silmesi → Supabase anonim oturum gelene kadar misafir ilerlemesi kaybolabilir.
+- Safari'nin 7 günlük depolama silmesi → anonim oturum da silinir; yedek ancak hesap bağlama gelince geri getirilebilir (bkz. §7).
 - Arka plan analizi düşük güçlü cihazlarda pil/işlemci tüketir → derinlik cihaz kapasitesine göre düşürülebilir; analiz yalnızca oyun bittikten sonra çalışır.
